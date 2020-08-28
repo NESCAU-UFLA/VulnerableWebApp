@@ -14,8 +14,26 @@ body {
 }
 
 .column {
+    text-align: center;
     margin-left: 15px;
     margin-right: 15px;
+    padding: 20px;
+}
+
+.inner-column {
+    min-width: 200px!important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+
+.user-img img {
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
 }
 
 input[type=text], input[type=password] {

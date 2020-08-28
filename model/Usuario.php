@@ -61,5 +61,13 @@
          * @return string O nome da foto
          */
         public function getFoto() { return $this->foto; }
+
+        /**
+         * Método define o novo nome da foto do usuário
+         * @param string $foto O nome da foto
+         */
+        public function setFoto(string $foto) {
+            $this->foto = $foto;
+        }
     }
 ?>

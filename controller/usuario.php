@@ -3,7 +3,7 @@
     include("../persistence/UsuarioDAO.php");
 
     /** Constante que representa o diretório das imagens */
-    define("USER_IMG_PATH", "/var/www/html/Pentest/uploads/");
+    define("USER_IMG_PATH", "/var/www/html/VulnerableWebApp/uploads/");
     
     session_start();
 
@@ -69,6 +69,19 @@
         }
     }
     
+    /**
+     * Função responsável por finalizar a sessão de um usuário
+     */
+    function logout() {
+        unset($_SESSION['usuario']);
+        header("Location: ../view/index.php");
+    }
+
+    function alterarFoto() {
+        $usuario = unserialize($_SESSION['usuario']);
+        
+    }
+
     if (isset($_POST['Usuario'])) {
         switch($_POST['Usuario']) {
             case 'Cadastrar':
@@ -76,6 +89,12 @@
                 break;
             case 'Login':
                 login();
+                break;
+            case "Logout":
+                logout();
+                break;
+            case "EditarFoto":
+                alterarFoto();
                 break;
         }
     }

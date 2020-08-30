@@ -12,7 +12,7 @@
                 <title>Login</title>
             </head>
             <body>
-                <div class="containerCenter" style="width: 820px; height: 250px; background-color: white;">
+                <div class="containerCenter shadow-box" style="width: 820px; height: 250px; background-color: white;">
                     <div class="inner-column" style="border-right: 1px solid grey;">
                         <div class="user-img">
 <?php                       echo '<img src="../uploads/'.$user->getFoto().'" />'; ?>

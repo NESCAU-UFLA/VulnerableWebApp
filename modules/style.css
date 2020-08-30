@@ -18,11 +18,19 @@ h4 {
     justify-content: center;
 }
 
+.shadow-box {
+    -webkit-box-shadow: -1px 6px 25px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 6px 25px -3px rgba(0,0,0,0.75);
+    box-shadow: -1px 6px 25px -3px rgba(0,0,0,0.75);
+}
+
 .column {
     text-align: center;
     margin-left: 15px;
     margin-right: 15px;
     padding: 20px;
+    height: 300px;
+    background-color: white;
 }
 
 .inner-column {

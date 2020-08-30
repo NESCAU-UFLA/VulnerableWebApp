@@ -5,7 +5,7 @@
         <title>Login</title>
     </head>
     <body>
-        <div class="containerCenter" style="width: 400px; height: 300px; background-color: white;">
+        <div class="containerCenter shadow-box" style="width: 400px; height: 300px; background-color: white;">
             <div style="padding-top: 20%; max-width: 200px;">
                 <form method="POST" action="../controller/usuario.php">
                     <input type="hidden" name="Usuario" value="Login" />

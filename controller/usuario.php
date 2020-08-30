@@ -77,9 +77,9 @@
         header("Location: ../view/index.php");
     }
 
-    function alterarFoto() {
+    function editarFoto() {
         $usuario = unserialize($_SESSION['usuario']);
-        
+        $usuario->setFoto(carregarFoto());
     }
 
     if (isset($_POST['Usuario'])) {
@@ -94,7 +94,7 @@
                 logout();
                 break;
             case "EditarFoto":
-                alterarFoto();
+                editarFoto();
                 break;
         }
     }

@@ -1,8 +1,8 @@
 <?php
     include_once("../model/Usuario.php");
     session_start();
-    $_SESSION['isChild'] = true;
     if (isset($_SESSION['usuario'])) {
+        $_SESSION['isChild'] = true;
 ?>
         <html>
             <head>
@@ -14,7 +14,7 @@
             </body>
         </html>
 <?php
-    unset($_SESSION['isChild']);
+        unset($_SESSION['isChild']);
     } else
         header("Location: index.php");
 ?>

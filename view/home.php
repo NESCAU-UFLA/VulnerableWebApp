@@ -26,7 +26,7 @@
                         </h3><br/>
                         <div>
                             <a href="editar-dados.php">
-                                <button>Editar perfil</button>
+                                <button>Ver perfil</button>
                             </a><br/><br/>
                             <form method="POST" action="../controller/usuario.php">
                                 <input type="hidden" name="Usuario" value="Logout" />

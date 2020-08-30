@@ -1,6 +1,8 @@
 <?php session_start(); ?>
 <html>
     <head>
+        <script type="text/javascript" src="../modules/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="../modules/functions.js"></script>
         <link href="../modules/style.css" rel="stylesheet" type="text/css" />
         <title>Login</title>
     </head>
@@ -15,7 +17,7 @@
                     <input type="password" autocomplete="new-password" name="Confirmar" placeholder="Confirmar senha" required /><br/>
                     <input type="file" name="foto" /><br/><br/>
                     <div>
-                        <button type="submit" name="cadastrar">Cadastrar</button>
+                        <button type="submit" name="cadastrar" onclick="return validarSenha();">Cadastrar</button>
                         <a href="index.php">
                             <button type="button" style="float: right;">Voltar</button>
                         </a>

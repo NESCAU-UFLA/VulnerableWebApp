@@ -42,5 +42,24 @@
             $usuario->Construtor(mysqli_fetch_row($res));
             closeCon($con);
         }
+
+        public function atualizarDados($usuario) {
+            $con = openCon();
+            $query = "SELECT * FROM Forum.Usuario WHERE "
+                ."IdUsuario = ".$usurio->getId()." AND "
+                ."Login = '".$usuario->getLogin()."';";
+            $res = mysqli_query($con, $query);
+            if (mysqli_num_rows($res) == 0) {
+                $query = "SELECT * FROM Forum.Usuario WHERE "
+                    ."Login = '".$usuario->getLogin()."';";
+                $res = mysqli_query($con, $query);
+                if (mysqli_num_rows($res) == 1)
+                    throw new Exception("Este nome de usuário já está em uso.");
+            }
+            $query = "UPDATE Forum.Usuario SET "
+                ."Login = '".$usuario->getLogin()."', "
+                ."Nome = '".$usuario->getNome()."', ";
+            closeCon($con);
+        } 
     }
 ?>

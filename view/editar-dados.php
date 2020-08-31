@@ -15,7 +15,7 @@
                 <div class="containerCenter shadow-box" style="width: 820px; height: 250px; background-color: white;">
                     <div class="inner-column" style="border-right: 1px solid grey;">
                         <div class="user-img">
-<?php                       echo '<img src="../uploads/'.$user->getFoto().'" />'; ?>
+                            <?php echo '<img src="../uploads/'.$user->getFoto().'" />'; ?>
                         </div><br/>
                         <form id="formImagem" method="POST" action="../controller/usuario.php" style="display: none;">
                             <input type="hidden" name="Usuario" value="EditarFoto" />

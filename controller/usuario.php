@@ -79,7 +79,13 @@
 
     function editarFoto() {
         $usuario = unserialize($_SESSION['usuario']);
+        $fotoAntiga = $usuario->getFoto();
         $usuario->setFoto(carregarFoto());
+        try {
+            (new UsuarioDAO())->atualizarDados($usuario);
+        } catch(Exception $e) {
+
+        }
     }
 
     if (isset($_POST['Usuario'])) {

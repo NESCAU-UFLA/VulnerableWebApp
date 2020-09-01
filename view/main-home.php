@@ -1,8 +1,8 @@
 <?php
-    // Se a página for aberta por outra página que não seja a home, voltamos à página inicial
-    if (!isset($_SESSION['isChild']))
-        header("Location: index.php");
-    $user = unserialize($_SESSION['usuario']);
+// Se a página for aberta por outra página que não seja a home, voltamos à página inicial
+if (!isset($_SESSION['isChild']))
+    header("Location: index.php");
+$user = unserialize($_SESSION['usuario']);
 ?>
 <div style="display: flex;">
     <div class="column shadow-box" style="width: 200px;">

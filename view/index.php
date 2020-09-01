@@ -18,13 +18,15 @@
                         </a>
                     </div>
                 </form>
-<?php           if (isset($_SESSION['resultado'])) {
+                <?php
+                if (isset($_SESSION['resultado'])) {
                     if ($_SESSION['resultado'][0])
                         echo '<p style="color:green">'.$_SESSION['resultado'][1].'</p>';
                     else
                         echo '<p style="color:red">'.$_SESSION['resultado'][1].'</p>';
                     unset($_SESSION['resultado']);
-                } ?>
+                }
+                ?>
             </div>
         </div>
     </body>

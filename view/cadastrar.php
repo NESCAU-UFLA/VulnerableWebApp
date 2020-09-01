@@ -23,10 +23,12 @@
                         </a>
                     </div>
                 </form>
-<?php           if (isset($_SESSION['resultado'])) {
+                <?php
+                if (isset($_SESSION['resultado'])) {
                     echo '<p style="color:red">'.$_SESSION['resultado'].'</p>';
                     unset($_SESSION['resultado']);
-                } ?>
+                }
+                ?>
             </div>
         </div>
     </body>

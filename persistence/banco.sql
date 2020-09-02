@@ -10,11 +10,13 @@ CREATE TABLE IF NOT EXISTS Forum.Usuario(
     INDEX(Login)
 );
 
-CREATE TABLE IF NOT EXISTS Forum.Post(
-	IdPost INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS Forum.Postagem(
+	IdPostagem INT NOT NULL AUTO_INCREMENT,
     IdUsuario INT NOT NULL,
-    Mensagem VARCHAR(100) NOT NULL,
-    PRIMARY KEY(IdPost, IdUsuario),
+    Mensagem VARCHAR(300) NOT NULL,
+    DataPostagem CHAR(16),
+    UltimaEdicao VARCHAR(16),
+    PRIMARY KEY(IdPostagem, IdUsuario),
     CONSTRAINT fk_id_usuario
 		FOREIGN KEY(IdUsuario)
         REFERENCES Forum.Usuario(IdUsuario)

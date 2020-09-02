@@ -1,4 +1,6 @@
 <?php
+include_once("Postagem.php");
+
 /**
  * Entidade responsável por armazenar as informações do usuário
  */
@@ -8,6 +10,7 @@ class Usuario {
     private $nome;
     private $senha;
     private $foto;
+    private $postagem;
 
     /**
      * Inicializa os atributos com valores padrão
@@ -18,11 +21,12 @@ class Usuario {
         $this->nome = "";
         $this->senha = "";
         $this->foto = "";
+        $this->postagem = new Postagem();
     }
 
     /**
-     * Define os valores dos atributos a partir de um array de argumentos
-     * @param string[] $args O array de argumentos
+     * que define os valores dos atributos a partir de um array de argumentos
+     * @param mixed[] $args O array de argumentos
      */
     public function Construtor(array $args) {
         $this->id = $args[0];
@@ -36,34 +40,52 @@ class Usuario {
      * Método que retorna o id do usuário
      * @return int O id do usuário
      */
-    public function getId() { return $this->id; }
+    public function getId() {
+        return $this->id;
+    }
 
     /**
      * Método que retorna o login do usuário
      * @return string O login do usuário
      */
-    public function getLogin() { return $this->login; }
+    public function getLogin() {
+        return $this->login;
+    }
     
     /**
      * Método que retorna o nome do usuário
      * @return string O nome do usuário
      */
-    public function getNome() { return $this->nome; }
+    public function getNome() {
+        return $this->nome;
+    }
 
     /**
      * Método que retorna a senha do usuário
      * @return string A senha do usuário
      */
-    public function getSenha() { return $this->senha; }
+    public function getSenha() {
+        return $this->senha;
+    }
     
     /**
      * Método que retorna o nome da foto do usuário
      * @return string O nome da foto
      */
-    public function getFoto() { return $this->foto; }
+    public function getFoto() {
+        return $this->foto;
+    }
 
     /**
-     * Método define o novo login do usuário
+     * Método que retorna a última postagem do usuário
+     * @return Postagem A postagem do usuário
+     */
+    public function getPostagem() {
+        return $this->postagem;
+    }
+
+    /**
+     * Método que define o novo login do usuário
      * @param string $login O login do usuário
      */
     public function setLogin(string $login) {
@@ -71,7 +93,7 @@ class Usuario {
     }
 
     /**
-     * Método define o novo nome do usuário
+     * Método que define o novo nome do usuário
      * @param string $nome O nome do usuário
      */
     public function setNome(string $nome) {
@@ -79,7 +101,7 @@ class Usuario {
     }
 
     /**
-     * Método define a nova senha do usuário
+     * Método que define a nova senha do usuário
      * @param string $senha A senha do usuário
      */
     public function setSenha(string $senha) {
@@ -87,11 +109,29 @@ class Usuario {
     }
 
     /**
-     * Método define o novo nome da foto do usuário
+     * Método que define o novo nome da foto do usuário
      * @param string $foto O nome da foto
      */
     public function setFoto(string $foto) {
         $this->foto = $foto;
+    }
+
+    public function setPostagem(Postagem $postagem) {
+        $this->postagem = $postagem;
+    }
+
+    /**
+     * Método que define a última postagem do usuário
+     */
+    public function adicionarPostagem(string $mensagem) {
+        $this->postagem->setMensagem($mensagem);
+    }
+
+    /**
+     * Método que define a última edição numa postagem do usuário
+     */
+    public function editarPostagem(string $mensagem) {
+        $this->postagem->setMensagem($mensagem, true);
     }
 }
 ?>

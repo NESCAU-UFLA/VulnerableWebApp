@@ -23,8 +23,12 @@ class PostagemDAO {
     public function recuperarTodos() {
         $con = openCon();
         $query = "SELECT * FROM Forum.Postagem AS P INNER JOIN Forum.Usuario AS U WHERE "
-                 ."P.IdUsuario = U.IdUsuario ORDER BY IdPostagem DESC;";
-        $rows = mysqli_fetch_all(mysqli_query($con, $query));
+                 ."P.IdUsuario = U.IdUsuario ORDER BY IdPostagem ASC;";
+        $res = mysqli_query($con, $query);
+        if (mysqli_num_rows($res) > 0)
+            $rows = mysqli_fetch_all($res);
+        else
+            $rows = [];
         closeCon($con);
         return $rows;
     }

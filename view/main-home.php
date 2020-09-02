@@ -17,13 +17,15 @@ $user = unserialize($_SESSION['usuario']);
             $color = "";
             foreach ($mensagens as $msg) {
                 if ($ehPar)
-                    $color = "lightgrey";
+                    $color = "#e8e8e8";
                 else
                     $color = "white";
                 $ehPar = !$ehPar;
-                echo '<div class="post-content" style="background-color: '.$color.'">';
-                echo '['.$msg[3].'] <a target="_blank" href="perfil.php?user='.$msg[6].'">'.$msg[7].'</a> escreveu:<br/>'.$msg[2];
+                echo '<a target="_blank" href="home?post='.$msg[0].'" style="text-decoration: none; color: black;">';
+                echo '<div class="post-content" style="background-color: '.$color.';">';
+                echo '['.$msg[3].'] '.$msg[7].' escreveu:<br/>'.$msg[2];
                 echo '</div>';
+                echo '</a>';
             }
             ?>
         </div>

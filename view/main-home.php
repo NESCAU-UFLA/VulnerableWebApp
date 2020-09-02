@@ -1,5 +1,5 @@
 <?php
-include_once("../persistence/MensagemDAO.php");
+include_once("../persistence/PostagemDAO.php");
 // Se a página for aberta por outra página que não seja a home, voltamos à página inicial
 if (!isset($_SESSION['isChild']))
     header("Location: index.php");
@@ -10,9 +10,9 @@ $user = unserialize($_SESSION['usuario']);
         a
     </div>
     <div class="column shadow-box" style="width: 300px;">
-        <div>
+        <div style="height: 250px; background-color: black;">
             <?php /*
-            $mensagens = (new MensagemDAO())->recuperarTodas();
+            $mensagens = (new PostagemDAO())->recuperarTodas();
             $ehPar = true;
             $color = "";
             foreach ($mensagens as $msg) {
@@ -26,6 +26,12 @@ $user = unserialize($_SESSION['usuario']);
                 echo '</div><br/>';
             } */
             ?>
+        </div>
+        <div>
+            <form method="POST" action="../controller/mensagem.php">
+                <textarea style="max-width: 100%; max-height: 100%;"></textarea><br/><br/>
+                <button type="submit">Enviar</button>
+            </form>
         </div>
     </div>
     <div class="column shadow-box" style="width: 200px;">

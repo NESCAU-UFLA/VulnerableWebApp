@@ -42,7 +42,6 @@ class UsuarioController {
     public function cadastrar() {
         $usuario = new Usuario();
         $usuario->Construtor(array(0, $_POST['Login'], $_POST['Nome'], $_POST['Senha'], $this->carregarFoto()));
-        error_log(var_dump($usuario->getFoto()));
         try {
             (new UsuarioDAO())->inserir($usuario);
             $_SESSION['resultado'] = [];

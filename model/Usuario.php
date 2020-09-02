@@ -10,7 +10,7 @@ class Usuario {
     private $nome;
     private $senha;
     private $foto;
-    private $postagem;
+    private $postagens;
 
     /**
      * Inicializa os atributos com valores padrão
@@ -21,11 +21,19 @@ class Usuario {
         $this->nome = "";
         $this->senha = "";
         $this->foto = "";
-        $this->postagem = new Postagem();
+        $this->limparPostagens();
     }
 
     /**
-     * que define os valores dos atributos a partir de um array de argumentos
+     * Método responsável por redefinir o array de postagens
+     */
+    private function limparPostagens() {
+        $this->postagens = [];
+        $this->postagens[] = new Postagem();
+    }
+
+    /**
+     * Método que define os valores dos atributos a partir de um array de argumentos
      * @param mixed[] $args O array de argumentos
      */
     public function Construtor(array $args) {
@@ -77,11 +85,21 @@ class Usuario {
     }
 
     /**
-     * Método que retorna a última postagem do usuário
+     * Método que retorna a postagem inserida/modificada pelo usuário
      * @return Postagem A postagem do usuário
      */
-    public function getPostagem() {
-        return $this->postagem;
+    public function getPostagemAtual() {
+        return $this->postagens[0];
+    }
+
+    /**
+     * Método que retorna todas as postagens do usuário
+     * @return Postagem[] As postagens do usuário
+     */
+    public function getPostagens() {
+        $postagens = $this->postagens;
+        $this->limparPostagens();
+        return $postagens;
     }
 
     /**
@@ -116,22 +134,36 @@ class Usuario {
         $this->foto = $foto;
     }
 
-    public function setPostagem(Postagem $postagem) {
-        $this->postagem = $postagem;
+    /**
+     * Método que define a postagem atual a ser manipulada
+     * @param Postagem $postagem A postagem
+     */
+    public function setPostagemAtual(Postagem $postagem) {
+        $this->postagens[0] = $postagem;
+    }
+
+    /**
+     * Método que define as postagens do usuário
+     * @param Postagem[] $postagens As postagens
+     */
+    public function setPostagens(array $postagens) {
+        $this->postagens = $postagens;
     }
 
     /**
      * Método que define a última postagem do usuário
+     * @param string $mensagem A mensagem
      */
-    public function adicionarPostagem(string $mensagem) {
-        $this->postagem->setMensagem($mensagem);
+    public function cadastrarPostagem(string $mensagem) {
+        $this->postagens[0]->setMensagem($mensagem);
     }
 
     /**
      * Método que define a última edição numa postagem do usuário
+     * @param string $mensagem A mensagem
      */
-    public function editarPostagem(string $mensagem) {
-        $this->postagem->setMensagem($mensagem, true);
+    public function editarPostagemAtual(string $mensagem) {
+        $this->postagens[0]->setMensagem($mensagem, true);
     }
 }
 ?>

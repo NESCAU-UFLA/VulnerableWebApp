@@ -30,18 +30,34 @@ class Postagem {
         $this->dataUltimaEdicao = $args[3];
     }
 
+    /**
+     * Método que retorna o id da postagem
+     * @return int $id O id do post
+     */
     public function getId() {
         return $this->id;
     }
 
+    /**
+     * Método que retorna a mensagem da postagem
+     * @return string $mensagem A mensagem
+     */
     public function getMensagem() {
         return $this->mensagem;
     }
 
+    /**
+     * Método que retorna a data da postagem
+     * @return string $dataDaPostagem A data da postagem
+     */
     public function getDataPostagem() {
         return $this->dataDaPostagem;
     }
 
+    /**
+     * Método que retorna a data da última edição da postagem
+     * @return string $dataUltimaEdicao A data da última edição da postagem
+     */
     public function getDataUltimaEdicao() {
         return $this->dataUltimaEdicao;
     }
@@ -54,9 +70,9 @@ class Postagem {
     public function setMensagem(string $mensagem, bool $editar = false) {
         $this->mensagem = $mensagem;
         if (!$editar)
-            $this->dataDaPostagem = time("d/m/Y H:i");
+            $this->dataDaPostagem = date("d/m/Y H:i");
         else
-            $this->dataUltimaEdicao = time("d/m/Y H:i");
+            $this->dataUltimaEdicao = date("d/m/Y H:i");
     }
 }
 ?>

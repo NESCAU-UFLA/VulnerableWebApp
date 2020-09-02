@@ -49,17 +49,41 @@ h4 {
     height: 100px;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], textarea {
     background: transparent;
     border: 0px;
     border-bottom: 2px solid grey;
     padding-bottom: 3px;
-    margin-bottom: 10px;
     font-size: 20px;
     transition: 0.5s;
+}
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+    border-bottom: 2px solid lightgray;
+}
+
+textarea {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    resize: horizontal;
+}
+
+input[type=text], input[type=password] {
+    margin-bottom: 10px;
     width: 200px;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-    border-bottom: 2px solid lightgray;
+.post-container {
+    text-align: left!important;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.post-content {
+    padding: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    overflow-wrap: break-word;
 }

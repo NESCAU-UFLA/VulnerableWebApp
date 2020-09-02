@@ -10,26 +10,27 @@ $user = unserialize($_SESSION['usuario']);
         a
     </div>
     <div class="column shadow-box" style="width: 300px;">
-        <div style="height: 250px; background-color: black;">
-            <?php /*
-            $mensagens = (new PostagemDAO())->recuperarTodas();
+        <div class="post-container" style="height: 250px;">
+            <?php
+            $mensagens = (new PostagemDAO())->recuperarTodos();
             $ehPar = true;
             $color = "";
             foreach ($mensagens as $msg) {
                 if ($ehPar)
                     $color = "lightgrey";
                 else
-                    $color = "lightgray";
+                    $color = "white";
                 $ehPar = !$ehPar;
-                echo '<div style="width: 100%; background-color: '.$color.'">';
-                echo '"'.$msg[2].'" - por <a target="_blank" href="perfil.php?user='.$msg[4].'">'.$msg[5].'</a>';
-                echo '</div><br/>';
-            } */
+                echo '<div class="post-content" style="background-color: '.$color.'">';
+                echo '['.$msg[3].'] <a target="_blank" href="perfil.php?user='.$msg[6].'">'.$msg[7].'</a> escreveu:<br/>'.$msg[2];
+                echo '</div>';
+            }
             ?>
         </div>
-        <div>
-            <form method="POST" action="../controller/mensagem.php">
-                <textarea style="max-width: 100%; max-height: 100%;"></textarea><br/><br/>
+        <div style="margin-top: 30px;">
+            <form method="POST" action="../controller/postagem.php">
+                <input type="hidden" name="Postagem" value="Inserir" />
+                <textarea name="Mensagem" placeholder="Escreva aqui ..." style="height: 70px;" required ></textarea><br/><br/>
                 <button type="submit">Enviar</button>
             </form>
         </div>

@@ -1,6 +1,6 @@
 <?php
 include_once("../persistence/PostagemDAO.php");
-// Se a página for aberta por outra página que não seja a home, voltamos à página inicial
+// Se a página for aberta por outra página que não seja a home, voltamos à página inicial.
 if (!isset($_SESSION['isChild']))
     header("Location: index.php");
 $user = unserialize($_SESSION['usuario']);

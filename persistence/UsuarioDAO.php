@@ -5,10 +5,10 @@ include_once("../model/Usuario.php");
 class UsuarioDAO {
     /**
      * Método responsável por inserir um usuário no banco
-     * @param Usuario $usuario Um usuário
+     * @param Usuario $usuario O usuário a ser inserido
      * @throws Exception Se o já existir no banco algum usuário com o mesmo login
      */
-    public function inserir($usuario) {
+    public function inserir(Usuario $usuario) {
         $con = openCon();
         $query = "SELECT * FROM Forum.Usuario WHERE Login = '".$usuario->getLogin()."';";
         $res = mysqli_query($con, $query);
@@ -26,10 +26,10 @@ class UsuarioDAO {
 
     /**
      * Método responsável por autenticar um usuário
-     * @param Usuario $usuario Um usuário
+     * @param Usuario $usuario O usuário a ser autenticaado
      * @throws Exception Se o login ou a senha forem inválidos
      */
-    public function login($usuario) {
+    public function login(Usuario $usuario) {
         $con = openCon();
         $query = "SELECT * FROM Forum.Usuario WHERE "
                  ."Login = '".$usuario->getLogin()."' AND "
@@ -43,10 +43,10 @@ class UsuarioDAO {
     
     /**
      * Método responsável por atualizar um usuário
-     * @param Usuario $usuario Um usuário
+     * @param Usuario $usuario O usuário a ser atualizado
      * @throws Exception Se o nome de usuário inserido já estiver sendo em uso por outro
      */
-    public function atualizar($usuario) {
+    public function atualizar(Usuario $usuario) {
         $con = openCon();
         $query = "SELECT * FROM Forum.Usuario WHERE "
                  ."IdUsuario = ".$usuario->getId()." AND "
@@ -69,12 +69,35 @@ class UsuarioDAO {
         closeCon($con);
     }
 
-    public function excluir($usuario) {
+    /**
+     * Método responsável por excluir um usuário do banco
+     * @param Usuario $usuario O usuário a ser excluído
+     */
+    public function excluir(Usuario $usuario) {
         $con = openCon();
         $query = "DELETE FROM Forum.Usuario WHERE "
                  ."IdUsuario = ".$usuario->getId().";";
         mysqli_query($con, $query);
         closeCon($con);
+    }
+
+    /**
+     * Método responsável por recuperar um usuário através do id de sua postagem
+     * @param int $idPost O id da postagem
+     * @return Usuario O autor da postagem
+     * @throws Exception Caso tenha ocorrido algum erro na query
+     */
+    public function recuperarPorIdPost($idPost) {
+        $con = openCon();
+        $query = "SELECT U.* FROM Forum.Usuario AS U INNER JOIN Forum.Postagem AS P WHERE "
+                 ."P.IdPostagem = ".$idPost.";";
+        $res = mysqli_query($con, $query);
+        if (!$res)
+            throw new Exception("Erro: ".mysqli_error($con)."<br/>Na query: ".$query);
+        $usuario = new Usuario();
+        $usuario->Construtor(mysqli_fetch_array($res));
+        closeCon($con);
+        return $usuario;
     }
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
-include_once("../model/Usuario.php");
-include_once("../persistence/PostagemDAO.php");
+require_once("../model/Usuario.php");
+require_once("../persistence/PostagemDAO.php");
 
 session_start();
 

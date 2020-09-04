@@ -34,10 +34,9 @@ h4 {
 }
 
 .inner-column {
-    min-width: 210px!important;
+    width: 210px;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 10px;
     padding-left: 20px;
     padding-right: 20px;
     text-align: center;
@@ -47,6 +46,11 @@ h4 {
     border-radius: 50px;
     width: 100px;
     height: 100px;
+}
+
+input[type=file] {
+    max-width: 100px;
+    color: transparent;
 }
 
 input[type=text], input[type=password], textarea {

@@ -1,6 +1,6 @@
 <?php
-include("../model/Usuario.php");
-include("../persistence/UsuarioDAO.php");
+require_once("../model/Usuario.php");
+require_once("../persistence/UsuarioDAO.php");
 
 session_start();
 

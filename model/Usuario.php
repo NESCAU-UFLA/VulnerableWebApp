@@ -1,5 +1,5 @@
 <?php
-include_once("Postagem.php");
+require_once("Postagem.php");
 
 /**
  * Entidade responsável por armazenar as informações do usuário

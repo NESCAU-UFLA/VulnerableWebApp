@@ -3,7 +3,9 @@ Este projeto tem por objetivo o desenvolvimento de uma aplicação web intencion
 
 ## Sumário
 * <a href="#aviso-legal">Aviso Legal</a>;
-* <a href="#pré-requisitos">Pré-requisitos</a>;
+* <a href="#primeiros-passos">Primeiros passos</a>
+  * <a href="#pré-requisitos">Pré-requisitos</a>;
+  * <a href="#">Arquivos, configurações e permissões</a>;
 * <a href="#sobre-a-aplicação">Sobre a Aplicação</a>
   * <a href="#vulnerabilidades-e-não-conformidades-intencionalmente-colocadas">Vulnerabilidades e não conformidades intencionalmente colocadas</a>;
 * <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>;
@@ -13,11 +15,14 @@ Este projeto tem por objetivo o desenvolvimento de uma aplicação web intencion
 ## Aviso Legal
 As vulnerabilidades e não conformidades aqui presentes foram propositalmente colocadas para fins educacionais apenas. Em hipótese alguma incentivamos o uso de tais más práticas.
 
-## Pré-requisitos
+## Primeiros passos
+### Pré-requisitos
 * Certifique-se de ter ambos servidores Apache e MySQL instalados e configurados. Confira <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a> para mais detalhes.
+* Instale a extenção MySQLi para o PHP;
+
+### Arquivos, configurações e permissões
 * O *sql script* para instanciar o *schema* da aplicação no banco de dados pode ser encontrado no diretório `persistence` com o nome `banco.sql`.
 * O arquivo de configuração para a conexão com o banco pode ser encontrado no diretório `persistence` com o nome `dbconfig.php`. Altere-o de modo que tenha as mesmas credenciais de acesso ao seu banco.
-* Instale a extenção MySQLi para o PHP;
 * Dê permissão de escrita ao diretório `uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.
 * No seu arquivo de configuração `php.ini` (Acesse <a href="https://www.php.net/manual/pt_BR/function.php-ini-loaded-file.php">essa página</a> em caso de dúvida para localizá-lo) verá que a configuração `allow_url_include` está em `Off`. Altere-a para `On` de modo que possa abrir arquivos de fora do sistema. Deixe assim: `allow_url_include = On`. Tal configuração deve ser manipulada para realizar testes de *RFI*.
 

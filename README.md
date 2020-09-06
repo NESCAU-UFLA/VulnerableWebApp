@@ -47,6 +47,7 @@ Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 
 ## Tecnologias Utilizadas
 * HTML5 e CSS3
+* JavaScript e jQuery versão 3.5.2
 * PHP versão 7.2.24
 * Apache versão 2.4.29
 * MySQL versão 5.7.27

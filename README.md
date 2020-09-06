@@ -6,7 +6,7 @@ As vulnerabilidades e não conformidades aqui presentes foram propositalmente co
 
 ## Pré-requisitos
 <ul>
-  <li>Tenha ambos servidores Apache e MySQL instalados e configurados. Confira [Tecnologias Utilizadas](#tecnologias-utilizadas) para mais detalhes.</li>
+  <li>Tenha ambos servidores Apache e MySQL instalados e configurados. Confira <a href="##tecnologias-utilizadas">Tecnologias Utilizadas</a> para mais detalhes.</li>
 </ul>
 
 ## Sobre a Aplicação
@@ -42,7 +42,7 @@ Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si 
 
 Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 
-# Tecnologias Utilizadas
+## Tecnologias Utilizadas
 <ul>
   <li>HTML5 e CSS3</li>
   <li>PHP versão 7.2.24</li>

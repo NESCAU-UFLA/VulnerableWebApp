@@ -20,7 +20,7 @@ Antes de por a mão na massa, devemos ficar atentos a algumas questões para que
 
 ### Pré-requisitos
 * Certifique-se de ter ambos servidores Apache e MySQL instalados e configurados. Confira <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a> para mais detalhes.
-* Instale a extenção MySQLi para o PHP;
+* Instale a extensão MySQLi para o PHP;
 
 ### Arquivos, configurações e permissões
 * O *sql script* para instanciar o *schema* da aplicação no banco de dados pode ser encontrado no diretório `persistence` com o nome `banco.sql`.

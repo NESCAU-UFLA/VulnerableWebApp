@@ -13,7 +13,7 @@ Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si 
 
 ## Vulnerabilidades e não conformidades intencionalmente colocadas
 <ul>
-  <li><i>Fraca política de senhas (ou falta dela);</i></li>
+  <li>Fraca política de senhas (ou falta dela);</li>
   <li>Tratamento de erro inapropriado;</li>
   <li><i>Brute-force Attack;</i></li>
   <li><i>XSS (Cross-Site Scripting)</i></li>

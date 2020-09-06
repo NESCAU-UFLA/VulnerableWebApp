@@ -8,7 +8,7 @@ Este projeto tem por objetivo o desenvolvimento de uma aplicação web intencion
   * <a href="#vulnerabilidades-e-não-conformidades-intencionalmente-colocadas">Vulnerabilidades e não conformidades intencionalmente colocadas</a>;
 * <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>;
 * <a href="#regras-de-diretórios">Regras de Diretórios</a>;
-* <a href="#aviso-legal">Diretórios</a>;
+* <a href="#diretórios">Diretórios</a>;
 
 ## Aviso Legal
 As vulnerabilidades e não conformidades aqui presentes foram propositalmente colocadas para fins educacionais apenas. Em hipótese alguma incentivamos o uso de tais más práticas.

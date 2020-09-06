@@ -1,6 +1,5 @@
 <?php
-require_once("../model/Usuario.php");
-require_once("../persistence/PostagemDAO.php");
+require("../modules/functions.php");
 
 session_start();
 
@@ -28,25 +27,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="column shadow-box" style="width: 300px;">
                     <div class="post-container" style="height: 250px;">
-                        <?php
-                        $postagens = (new PostagemDAO())->recuperarTodos();
-                        $ehPar = true;
-                        $color = "";
-                        foreach ($postagens as $post) {
-                            if ($ehPar)
-                                $color = "#e8e8e8";
-                            else
-                                $color = "white";
-                            $ehPar = !$ehPar;
-                        ?>
-                            <a href="post.php?id=<?php echo $post[0]; ?>" style="text-decoration: none; color: black;">
-                                <div class="post-content" style="background-color: <?php echo $color; ?>;">
-                                    <?php echo '['.$post[3].'] '.$post[7].' escreveu:<br/>'.$post[2]; ?>
-                                </div>
-                            </a>
-                        <?php
-                        }
-                        ?>
+                        <?php mostrarTodasPostagens(); ?>
                     </div>
                     <div style="margin-top: 30px;">
                         <form method="POST" action="../controller/postagem.php">

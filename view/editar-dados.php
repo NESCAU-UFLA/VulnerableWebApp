@@ -1,5 +1,6 @@
 <?php
-require_once("../model/Usuario.php");
+require("../modules/functions.php");
+
 session_start();
 if (isset($_SESSION['usuario'])) {
     $user = unserialize($_SESSION['usuario']);
@@ -54,16 +55,7 @@ if (isset($_SESSION['usuario'])) {
                 </div>
                 <div class="inner-column" style="padding-top: 30px; margin-right: 20px;">
                     <div id="resultado">
-                        <?php
-                        if (isset($_SESSION['resultado'])) {
-                            if ($_SESSION['resultado'][0]) {
-                                echo '<p style="color: green;">'.$_SESSION['resultado'][1].'</p>';
-                            } else {
-                                echo '<p style="color: red;">'.$_SESSION['resultado'][1].'</p>';
-                            }
-                            unset($_SESSION['resultado']);
-                        }
-                        ?>
+                        <?php mostrarMensagemDeResultado(); ?>
                     </div>
                     <div id="formSenha" style="display: none;">
                         <form method="POST" action="../controller/usuario.php">

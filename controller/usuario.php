@@ -141,7 +141,9 @@ class UsuarioController {
      * Método responsável por excluir um usuário
      */
     public function excluir() {
-        (new UsuarioDAO())->excluir(unserialize($_SESSION['usuario']));
+        $usuario = unserialize($_SESSION['usuario']);
+        unlink($this->USER_IMG_PATH.$usuario->getFoto());
+        (new UsuarioDAO())->excluir($usuario);
         $this->logout();
     }
 }

@@ -42,7 +42,7 @@ Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si 
 
 Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 
-## Tecnologias Utilizadas
+# Tecnologias Utilizadas
 <ul>
   <li>HTML5 e CSS3</li>
   <li>PHP versão 7.2.24</li>

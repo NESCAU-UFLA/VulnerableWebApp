@@ -1,15 +1,15 @@
 <?php session_start(); ?>
 <html>
     <head>
-        <script type="text/javascript" src="../modules/jquery-3.5.1.min.js"></script>
-        <script type="text/javascript" src="../modules/functions.js"></script>
-        <link href="../modules/style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="modules/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="modules/functions.js"></script>
+        <link href="modules/style.css" rel="stylesheet" type="text/css" />
         <title>Login</title>
     </head>
     <body>
         <div class="containerCenter shadow-box" style="width: 400px; height: 300px; background-color: white;">
             <div style="padding-top: 2%; max-width: 200px;">
-                <form method="POST" action="../controller/usuario.php" enctype="multipart/form-data">
+                <form method="POST" action="controller/usuario.php" enctype="multipart/form-data">
                     <input type="hidden" name="Usuario" value="Cadastrar" />
                     <input type="text" name="Login" placeholder="Usuario" required /><br/>
                     <input type="text" name="Nome" placeholder="Nome" required /><br/>

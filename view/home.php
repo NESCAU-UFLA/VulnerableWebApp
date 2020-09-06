@@ -78,5 +78,5 @@ if (isset($_SESSION['usuario'])) {
     </html>
 <?php
 } else
-    header("Location: index.php");
+    header("Location: ../index.php");
 ?>

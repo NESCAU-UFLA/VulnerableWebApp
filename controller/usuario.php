@@ -47,12 +47,12 @@ class UsuarioController {
             $_SESSION['resultado'] = [];
             $_SESSION['resultado'][] = true;
             $_SESSION['resultado'][] = "Cadastro efetuado com sucesso! Faça login...";
-            header("Location: ../view/index.php");
+            header("Location: ../");
         } catch (Exception $e) {
             if (!empty($_FILES['foto']['name']))
                 unlink($this->USER_IMG_PATH.$usuario->getFoto());
             $_SESSION['resultado'] = $e->getMessage();
-            header("Location: ../view/cadastrar.php");
+            header("Location: ../?page=cadastrar.php");
         }
     }
 
@@ -70,7 +70,7 @@ class UsuarioController {
             $_SESSION['resultado'] = [];
             $_SESSION['resultado'][] = false;
             $_SESSION['resultado'][] = $e->getMessage();
-            header("Location: ../view/index.php");
+            header("Location: ../");
         }
     }
 
@@ -79,7 +79,7 @@ class UsuarioController {
      */
     public function logout() {
         unset($_SESSION['usuario']);
-        header("Location: ../view/index.php");
+        header("Location: ../");
     }
 
     /**

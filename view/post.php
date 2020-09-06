@@ -58,5 +58,5 @@ if (isset($_SESSION['usuario']) && (isset($_GET['id']) || isset($GET['msg']))) {
     </html>
 <?php
 } else
-    header("Location: index.php");
+    header("Location: ../index.php");
 ?>

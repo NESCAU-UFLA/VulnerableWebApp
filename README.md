@@ -28,6 +28,7 @@ Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si 
 * Fraca política de senhas (ou falta dela);
 * Tratamento de erro inapropriado;
 * Falta de proteção a ataques de força bruta;
+* Informações sensíveis são salvas "em claro" no banco de dados, ou seja, sem o uso de criptografia;
 * *XSS (Cross-Site Scripting)*
   * *Reflected;*
   * *Stored;*

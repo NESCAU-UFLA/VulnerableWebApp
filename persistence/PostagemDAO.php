@@ -1,6 +1,6 @@
 <?php
-include_once("dbconfig.php");
-include_once("../model/Usuario.php");
+require_once("dbconfig.php");
+require_once("../model/Usuario.php");
 
 class PostagemDAO {
     /**

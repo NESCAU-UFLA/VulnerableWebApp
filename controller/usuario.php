@@ -52,7 +52,7 @@ class UsuarioController {
             if (!empty($_FILES['foto']['name']))
                 unlink($this->USER_IMG_PATH.$usuario->getFoto());
             $_SESSION['resultado'] = $e->getMessage();
-            header("Location: ../?page=cadastrar.php");
+            header("Location: ../?page=view/cadastrar.php");
         }
     }
 

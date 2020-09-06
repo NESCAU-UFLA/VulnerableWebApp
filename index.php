@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['page']))
-    include("view/".$_GET['page']);
+    include($_GET['page']);
 else {
     session_start();
 ?>
@@ -18,7 +18,7 @@ else {
                         <input type="password" autocomplete="new-password" name="Senha" placeholder="Senha" /><br/><br/>
                         <div>
                             <button type="submit" name="login">Entrar</button>
-                            <a href="?page=cadastrar.php">
+                            <a href="?page=view/cadastrar.php">
                                 <button type="button" style="float: right;">Cadastrar</button>
                             </a>
                         </div>

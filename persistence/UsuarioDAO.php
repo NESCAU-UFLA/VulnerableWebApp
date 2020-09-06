@@ -1,6 +1,6 @@
 <?php
-include_once("dbconfig.php");
-include_once("../model/Usuario.php");
+require_once("dbconfig.php");
+require_once("../model/Usuario.php");
 
 class UsuarioDAO {
     /**
@@ -32,11 +32,16 @@ class UsuarioDAO {
     public function login(Usuario $usuario) {
         $con = openCon();
         $query = "SELECT * FROM Forum.Usuario WHERE "
+                 ."Login = '".$usuario->getLogin()."';";
+        $res = mysqli_query($con, $query);
+        if (mysqli_num_rows($res) == 0)
+            throw new Exception("Este usuário não existe.");
+        $query = "SELECT * FROM Forum.Usuario WHERE "
                  ."Login = '".$usuario->getLogin()."' AND "
                  ."Senha = '".$usuario->getSenha()."';";
         $res = mysqli_query($con, $query);
         if (mysqli_num_rows($res) == 0)
-            throw new Exception("Usuário ou senha inválidos.");
+            throw new Exception("Senha inválida.");
         $usuario->Construtor(mysqli_fetch_row($res));
         closeCon($con);
     }

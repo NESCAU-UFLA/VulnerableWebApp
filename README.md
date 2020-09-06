@@ -27,7 +27,7 @@ Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si 
 ### Vulnerabilidades e não conformidades intencionalmente colocadas
 * Fraca política de senhas (ou falta dela);
 * Tratamento de erro inapropriado;
-* Falta de proteção a *Brute-force Attack*;
+* Falta de proteção a ataques de força bruta;
 * *XSS (Cross-Site Scripting)*
   * *Reflected;*
   * *Stored;*

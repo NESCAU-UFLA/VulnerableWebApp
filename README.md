@@ -5,7 +5,7 @@ Este projeto tem por objetivo o desenvolvimento de uma aplicação web intencion
 * <a href="#aviso-legal">Aviso Legal</a>;
 * <a href="#primeiros-passos">Primeiros passos</a>
   * <a href="#pré-requisitos">Pré-requisitos</a>;
-  * <a href="#">Arquivos, configurações e permissões</a>;
+  * <a href="#arquivos-configurações-e-permissões">Arquivos, configurações e permissões</a>;
 * <a href="#sobre-a-aplicação">Sobre a Aplicação</a>
   * <a href="#vulnerabilidades-e-não-conformidades-intencionalmente-colocadas">Vulnerabilidades e não conformidades intencionalmente colocadas</a>;
 * <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>;
@@ -16,6 +16,8 @@ Este projeto tem por objetivo o desenvolvimento de uma aplicação web intencion
 As vulnerabilidades e não conformidades aqui presentes foram propositalmente colocadas para fins educacionais apenas. Em hipótese alguma incentivamos o uso de tais más práticas.
 
 ## Primeiros passos
+Antes de por a mão na massa, devemos ficar atentos a algumas questões para que a aplicação funcione corretamente. Serão descritos a seguir os **pré-requisitos** para a base do seu funcionamento e, não menos importante, também algumas instruções sobre **arquivos e configurações**.
+
 ### Pré-requisitos
 * Certifique-se de ter ambos servidores Apache e MySQL instalados e configurados. Confira <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a> para mais detalhes.
 * Instale a extenção MySQLi para o PHP;

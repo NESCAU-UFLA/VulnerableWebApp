@@ -6,7 +6,7 @@ As vulnerabilidades e não conformidades aqui presentes foram propositalmente co
 
 ## Pré-requisitos
 <ul>
-  <li>Tenha ambos servidores Apache e MySQL instalados e configurados. Confira [Tecnologias Utilizadas][##tecnologias-utilizadas] para mais detalhes.</li>
+  <li>Tenha ambos servidores Apache e MySQL instalados e configurados. Confira [Tecnologias Utilizadas](##tecnologias-utilizadas) para mais detalhes.</li>
 </ul>
 
 ## Sobre a Aplicação

@@ -7,13 +7,8 @@ As vulnerabilidades e não conformidades aqui presentes foram propositalmente co
 ## Pré-requisitos
 * Certifique-se de ter ambos servidores Apache e MySQL instalados e configurados. Confira <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a> para mais detalhes.
 * Instale a extenção MySQLi para o PHP;
-```
-sudo apt-get update
-sudo apt-get install php-mysql
-sudo service apache2 restart
-```
 * Dê permissão de escrita ao diretório `uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.
-* No seu arquivo de configuração `php.ini` (Acesse <a href="https://www.php.net/manual/pt_BR/function.php-ini-loaded-file.php">essa página</a> em caso de dúvida para localizá-los) verá que a configuração `allow_url_include` está em `Off`. Altere-a para `On` de modo que possa abrir arquivos de fora do sistema. Deixe assim: `allow_url_include = On`. Tal configuração deve ser manipulada para realizar testes de *RFI*.
+* No seu arquivo de configuração `php.ini` (Acesse <a href="https://www.php.net/manual/pt_BR/function.php-ini-loaded-file.php">essa página</a> em caso de dúvida para localizá-lo) verá que a configuração `allow_url_include` está em `Off`. Altere-a para `On` de modo que possa abrir arquivos de fora do sistema. Deixe assim: `allow_url_include = On`. Tal configuração deve ser manipulada para realizar testes de *RFI*.
 
 ## Sobre a Aplicação
 Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si através de suas postagens.

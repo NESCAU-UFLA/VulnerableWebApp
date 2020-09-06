@@ -54,8 +54,8 @@ Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 ## Regras de Diretórios
 <ul>
   <li>Diretórios de desenvolvimento devem estar no modelo MVC.</li>
-  <li>Arquivos extras do Front-end devem ficar no diretório ```modules```.</li>
-  <li>A documentação deve ficar no diretório ```docs```.</li>
+  <li>Arquivos extras do Front-end devem ficar no diretório `modules` .</li>
+  <li>A documentação deve ficar no diretório docs.</li>
 </ul>
 
 ## Diretórios

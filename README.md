@@ -64,3 +64,6 @@ Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 |-- uploads
 |-- view
 ```
+
+# Autores
+* @VitorOriel

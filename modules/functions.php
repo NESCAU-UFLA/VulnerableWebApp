@@ -66,7 +66,7 @@ function mostrarPostagensPorMensagem(string $msg) {
 }
 
 function mostrarPostagensDoUsuario() {
-
+    //Em construção
 }
 
 /**
@@ -92,7 +92,7 @@ function mostrarPostagemPorId($id) {
                     </h4><br/>
                     <?php
                     $usuario = unserialize($_SESSION['usuario']);
-                    if ($usuario->getId() == 0 || $usuario->getId() == $autor->getId()) {
+                    if ($usuario->getId() == 1 || $usuario->getId() == $autor->getId()) {
                         $_SESSION['postId'] = $id;
                     ?>
                         <form method="POST" action="../controller/postagem.php">

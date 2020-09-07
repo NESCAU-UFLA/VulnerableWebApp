@@ -2,6 +2,9 @@
 require_once("dbconfig.php");
 require_once("../model/Usuario.php");
 
+/**
+ * Entidade responsável por manipular os usuários no banco de dadoss
+ */
 class UsuarioDAO {
     /**
      * Método responsável por inserir um usuário no banco

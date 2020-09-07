@@ -2,6 +2,9 @@
 require_once("dbconfig.php");
 require_once("../model/Usuario.php");
 
+/**
+ * Entidade responsável por manipular as postagens no banco de dados
+ */
 class PostagemDAO {
     /**
      * Método responsável por inserir uma postagem do usuário no banco
@@ -20,12 +23,24 @@ class PostagemDAO {
     }
 
     /**
+     * Método responsável por excluir uma postagem do banco
+     * @param Postagem $postagem A postagem a ser excluída
+     */
+    public function excluir(Postagem $postagem) {
+        $con = openCon();
+        $query = "DELETE FROM Forum.Postagem WHERE "
+                 ."IdPostagem = ".$postagem->getId().";";
+        mysqli_query($con, $query);
+        closeCon($con);
+    }
+
+    /**
      * Método responsável por recuperar todas as postagens do banco
      * @return mixed[] O array contendo as postagens e seus respectivos escritores
      */
     public function recuperarTodos() {
         $con = openCon();
-        $query = "SELECT * FROM Forum.Postagem AS P INNER JOIN Forum.Usuario AS U WHERE "
+        $query = "SELECT * FROM Forum.Postagem AS P INNER JOIN Forum.Usuario AS U ON "
                  ."P.IdUsuario = U.IdUsuario ORDER BY IdPostagem ASC;";
         $res = mysqli_query($con, $query);
         if (mysqli_num_rows($res) > 0)

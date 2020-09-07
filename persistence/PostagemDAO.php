@@ -51,6 +51,21 @@ class PostagemDAO {
         return $rows;
     }
 
+    public function recuperarPorUsuario(Usuario $usuario) {
+        $con = openCon();
+        $query = "SELECT IdPostagem, Mensagem, DataPostagem, UltimaEdicao FROM Forum.Postagem WHERE "
+                 ."IdUsuario = ".$usuario->getId().";";
+        $res = mysqli_query($con, $query);
+        $postagens = [];
+        foreach (mysqli_fetch_all($res) as $row) {
+            $postagem = new Postagem();
+            $postagem->Construtor($row);
+            $postagens[] = $postagem;
+        }
+        closeCon($con);
+        $usuario->setPostagens($postagens);
+    }
+
     /**
      * Método responsável por recuperar uma postagem pelo seu id
      * @param int $id O id da postagem

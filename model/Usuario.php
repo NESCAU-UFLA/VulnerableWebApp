@@ -21,13 +21,6 @@ class Usuario {
         $this->nome = "";
         $this->senha = "";
         $this->foto = "";
-        $this->limparPostagens();
-    }
-
-    /**
-     * Método responsável por redefinir o array de postagens
-     */
-    private function limparPostagens() {
         $this->postagens = [];
         $this->postagens[] = new Postagem();
     }
@@ -97,9 +90,7 @@ class Usuario {
      * @return Postagem[] As postagens do usuário
      */
     public function getPostagens() {
-        $postagens = $this->postagens;
-        $this->limparPostagens();
-        return $postagens;
+        return $this->postagens;
     }
 
     /**

@@ -11,6 +11,7 @@ function validarSenha() {
 function mostrarFormDados() {
     $('#dados')[0].style.display = 'none';
     $('#resultado')[0].style.display = 'none';
+    $('#postagensDoUsuario')[0].style.display = 'none';
     $('#formDados')[0].style.display = 'block';
     $('#formImagem')[0].style.display = 'block';
     $('#formSenha')[0].style.display = 'block';
@@ -19,6 +20,7 @@ function mostrarFormDados() {
 function esconderFormDados() {
     $('#dados')[0].style.display = 'block';
     $('#resultado')[0].style.display = 'block';
+    $('#postagensDoUsuario')[0].style.display = 'block';
     $('#formDados')[0].style.display = 'none';
     $('#formImagem')[0].style.display = 'none';
     $('#formSenha')[0].style.display = 'none';

@@ -6,6 +6,7 @@ require_once("../persistence/PostagemDAO.php");
 /**
  * Função responsável por listar um dado vetor de postagens
  * @param array $postagens As postagens a serem listadas
+ * @param Usuario $usuario O autor da postagem, caso for visualizado em seu perfil
  */
 function listarPostagens(array $postagens, Usuario $autor = null) {
     $ehPar = true;
@@ -19,14 +20,22 @@ function listarPostagens(array $postagens, Usuario $autor = null) {
             $color = "white";
         $ehPar = !$ehPar;
         if ($autor != null) {
-        }
 ?>
-        <a href="post.php?id=<?php echo $post[0]; ?>" style="text-decoration: none; color: black;">
-            <div class="post-content" style="background-color: <?php echo $color; ?>;">
-                <?php echo '['.$post[3].'] '.$post[7].' escreveu:<br/>'.$post[2]; ?>
-            </div>
-        </a>
-    <?php
+            <a href="post.php?id=<?php echo $post->getId(); ?>" style="text-decoration: none; color: black;">
+                <div class="post-content" style="background-color: <?php echo $color; ?>;">
+                    <?php echo '['.$post->getDataPostagem().'] '.$autor->getNome().' escreveu:<br/>'.$post->getMensagem(); ?>
+                </div>
+            </a>
+        <?php
+        } else {
+        ?>
+            <a href="post.php?id=<?php echo $post[0]; ?>" style="text-decoration: none; color: black;">
+                <div class="post-content" style="background-color: <?php echo $color; ?>;">
+                    <?php echo '['.$post[3].'] '.$post[7].' escreveu:<br/>'.$post[2]; ?>
+                </div>
+            </a>
+        <?php
+        }
     }
 }
 
@@ -66,7 +75,13 @@ function mostrarPostagensPorMensagem(string $msg) {
 }
 
 function mostrarPostagensDoUsuario() {
-    //Em construção
+    global $usuario;
+    (new PostagemDAO())->recuperarPorUsuario($usuario);
+?>
+    <div class="post-container" style="height: 250px;">
+        <?php listarPostagens([], $usuario); ?>
+    </div>
+<?php
 }
 
 /**
@@ -136,6 +151,33 @@ function mostrarMensagemDeResultado() {
             echo '<p style="color: red;">'.$_SESSION['resultado'][1].'</p>';
         }
         unset($_SESSION['resultado']);
+    }
+}
+
+function verificarVisitanteDoPerfil() {
+    global $admin;
+    global $usuario;
+    if (isset($_POST['idUsuario']) && $_POST['idUsuario'] != $usuario->getId()) {
+        if ($usuario->getId() == 1)
+            $admin = true;
+        $usuario = (new UsuarioDAO())->recuperarPorId($_POST['idUsuario']);
+    }
+}
+
+function mostrarDadosDoPerfil() {
+    global $admin;
+    global $usuario;
+    echo '<h4>Nome: '.$usuario->getNome().'</h4>';
+    if (!isset($_POST['idUsuario']) || $admin) {
+        echo '<h4>Usuário: '.$usuario->getLogin().'</h4>';
+?>
+        <form method="POST" action="../controller/usuario.php"><br/>
+            <input type="hidden" name="Usuario" value="Excluir" />
+            <button type="submit">Excluir conta</button>
+        </form>
+<?php
+        if (!$admin)
+            echo '<button onclick="mostrarFormDados();">Editar dados</button>';
     }
 }
 ?>

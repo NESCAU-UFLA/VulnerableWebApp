@@ -3,7 +3,8 @@ require("../modules/functions.php");
 
 session_start();
 
-if (isset($_SESSION['usuario']) && (isset($_GET['id']) || isset($GET['msg']))) {
+if (isset($_SESSION['usuario']) && (isset($_GET['id']) || isset($_GET['msg']))) {
+
 ?>
     <html>
         <head>
@@ -12,9 +13,12 @@ if (isset($_SESSION['usuario']) && (isset($_GET['id']) || isset($GET['msg']))) {
             <title>Post</title>
         </head>
         <body>
-            <div class="containerCenter shadow-box" style="background-color: white; width: 600px; height: 300px;">
-                <?php mostrarPostagemPorId($_GET['id']); ?>
-            </div>
+            <?php
+            if (isset($_GET['id']))
+                mostrarPostagemPorId($_GET['id']);
+            else if (isset($_GET['msg']))
+                mostrarPostagensPorMensagem($_GET['msg']);
+            ?>
         </body>
     </html>
 <?php

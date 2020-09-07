@@ -54,5 +54,24 @@ class PostagemDAO {
         closeCon($con);
         return $postagem;
     }
+
+    /**
+     * Método responsável por recuperar todas as postagens do banco
+     * @param string $mensagem A mensagem a ser buscada
+     * @return mixed[] O array contendo as postagens e seus respectivos escritores
+     */
+    public function recuperarPorMensagem(string $mensagem) {
+        $con = openCon();
+        $query = "SELECT * FROM Forum.Postagem AS P INNER JOIN Forum.Usuario AS U ON "
+                 ."P.IdUsuario = U.IdUsuario WHERE "
+                 ."P.Mensagem LIKE '%".$mensagem."%';";
+        $res = mysqli_query($con, $query);
+        if (mysqli_num_rows($res) > 0)
+            $rows = mysqli_fetch_all($res);
+        else
+            $rows = [];
+        closeCon($con);
+        return $rows;
+    }
 }
 ?>

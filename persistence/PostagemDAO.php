@@ -64,7 +64,7 @@ class PostagemDAO {
         $con = openCon();
         $query = "SELECT * FROM Forum.Postagem AS P INNER JOIN Forum.Usuario AS U ON "
                  ."P.IdUsuario = U.IdUsuario WHERE "
-                 ."P.Mensagem LIKE '%".$mensagem."%';";
+                 ."P.Mensagem LIKE '%".$mensagem."%' ORDER BY IdPostagem DESC;";
         $res = mysqli_query($con, $query);
         if (mysqli_num_rows($res) > 0)
             $rows = mysqli_fetch_all($res);

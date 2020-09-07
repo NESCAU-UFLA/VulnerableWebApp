@@ -26,9 +26,7 @@ if (isset($_SESSION['usuario'])) {
                     </form>
                 </div>
                 <div class="column shadow-box" style="width: 300px;">
-                    <div class="post-container" style="height: 250px;">
-                        <?php mostrarTodasPostagens(); ?>
-                    </div>
+                    <?php mostrarTodasPostagens(); ?>
                     <div style="margin-top: 30px;">
                         <form method="POST" action="../controller/postagem.php">
                             <input type="hidden" name="Postagem" value="Inserir" />

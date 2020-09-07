@@ -4,10 +4,10 @@ require_once("../persistence/UsuarioDAO.php");
 require_once("../persistence/PostagemDAO.php");
 
 /**
- * Função responsável por recuperar e mostrar todas as postagens
+ * Função responsável por listar um dado vetor de postagens
+ * @param array $postagens As postagens a serem listadas
  */
-function mostrarTodasPostagens() {
-    $postagens = (new PostagemDAO())->recuperarTodos();
+function listarPostagens(array $postagens) {
     $ehPar = true;
     $color = "";
     foreach ($postagens as $post) {
@@ -22,8 +22,20 @@ function mostrarTodasPostagens() {
                 <?php echo '['.$post[3].'] '.$post[7].' escreveu:<br/>'.$post[2]; ?>
             </div>
         </a>
-<?php
+    <?php
     }
+}
+
+/**
+ * Função responsável por recuperar e mostrar todas as postagens
+ */
+function mostrarTodasPostagens() {
+    $postagens = (new PostagemDAO())->recuperarTodos();
+?>
+    <div class="post-container" style="height: 250px;">
+        <?php listarPostagens($postagens); ?>
+    </div>
+<?php
 }
 
 /**
@@ -42,24 +54,7 @@ function mostrarPostagensPorMensagem(string $msg) {
                 Resultados da pesquisa para: <?php echo $msg; ?>
             </h2>
             <div class="post-container" style="height: 200px; width: 90%; margin: 40px;">
-                <?php
-                $ehPar = true;
-                $color = "";
-                foreach ($postagens as $post) {
-                    if ($ehPar)
-                        $color = "#e8e8e8";
-                    else
-                        $color = "white";
-                    $ehPar = !$ehPar;
-                ?>
-                    <a href="post.php?id=<?php echo $post[0]; ?>" style="text-decoration: none; color: black;">
-                        <div class="post-content" style="background-color: <?php echo $color; ?>;">
-                            <?php echo '['.$post[3].'] '.$post[7].' escreveu:<br/>'.$post[2]; ?>
-                        </div>
-                    </a>
-                <?php
-                }
-                ?>
+                <?php listarPostagens($postagens); ?>
             </div>
         </div>
     </div>
@@ -97,9 +92,9 @@ function mostrarPostagemPorId($id) {
                     Postado em: <?php echo $autor->getPostagemAtual()->getDataPostagem(); ?>
                     <br/>
                     <?php
-                        $dataUltimaEdicao = $autor->getPostagemAtual()->getDataUltimaEdicao();
-                        if ($dataUltimaEdicao != "")
-                            echo 'Ultima edição em: '.$dataUltimaEdicao;
+                    $dataUltimaEdicao = $autor->getPostagemAtual()->getDataUltimaEdicao();
+                    if ($dataUltimaEdicao != "")
+                        echo 'Ultima edição em: '.$dataUltimaEdicao;
                     ?>
                 </div>
             </div>
@@ -110,6 +105,9 @@ function mostrarPostagemPorId($id) {
     }
 }
 
+/**
+ * Função responsável por mostrar se uma ação foi bem sucedida ou não
+ */
 function mostrarMensagemDeResultado() {
     if (isset($_SESSION['resultado'])) {
         if ($_SESSION['resultado'][0]) {

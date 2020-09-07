@@ -94,7 +94,8 @@ class UsuarioDAO {
      */
     public function recuperarPorIdPost($idPost) {
         $con = openCon();
-        $query = "SELECT U.* FROM Forum.Usuario AS U INNER JOIN Forum.Postagem AS P WHERE "
+        $query = "SELECT U.* FROM Forum.Postagem AS P INNER JOIN Forum.Usuario AS U ON "
+                 ."P.IdUsuario = U.IdUsuario WHERE "
                  ."P.IdPostagem = ".$idPost.";";
         $res = mysqli_query($con, $query);
         if (!$res)

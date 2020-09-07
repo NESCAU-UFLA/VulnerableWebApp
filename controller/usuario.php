@@ -79,6 +79,7 @@ class UsuarioController {
      */
     public function logout() {
         unset($_SESSION['usuario']);
+        session_destroy();
         header("Location: ../");
     }
 

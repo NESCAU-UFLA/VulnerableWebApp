@@ -7,15 +7,19 @@ require_once("../persistence/PostagemDAO.php");
  * Função responsável por listar um dado vetor de postagens
  * @param array $postagens As postagens a serem listadas
  */
-function listarPostagens(array $postagens) {
+function listarPostagens(array $postagens, Usuario $autor = null) {
     $ehPar = true;
     $color = "";
+    if ($autor != null)
+        $postagens = $autor->getPostagens();
     foreach ($postagens as $post) {
         if ($ehPar)
             $color = "#e8e8e8";
         else
             $color = "white";
         $ehPar = !$ehPar;
+        if ($autor != null) {
+        }
 ?>
         <a href="post.php?id=<?php echo $post[0]; ?>" style="text-decoration: none; color: black;">
             <div class="post-content" style="background-color: <?php echo $color; ?>;">
@@ -61,6 +65,10 @@ function mostrarPostagensPorMensagem(string $msg) {
 <?php
 }
 
+function mostrarPostagensDoUsuario() {
+
+}
+
 /**
  * Função responsável por recuperar e mostrar uma postagem
  * @param int $id O id da postagem
@@ -70,8 +78,8 @@ function mostrarPostagemPorId($id) {
         $autor = (new UsuarioDAO())->recuperarPorIdPost($id);
         $autor->setPostagemAtual((new PostagemDAO())->recuperarPorId($id));
 ?>
-        <div class="containerCenter shadow-box" style="background-color: white; width: 600px; height: 300px;">
-            <div style="width: 200px;">
+        <div class="containerCenter shadow-box" style="background-color: white; width: 640px; height: 300px;">
+            <div style="min-width: 200px;">
                 <a href="home.php">
                     <button style="float: left;">Voltar</button>
                 </a>
@@ -81,7 +89,19 @@ function mostrarPostagemPorId($id) {
                     </div><br/>
                     <h4>
                         <?php echo $autor->getNome(); ?>
-                    </h4>
+                    </h4><br/>
+                    <?php
+                    $usuario = unserialize($_SESSION['usuario']);
+                    if ($usuario->getId() == 0 || $usuario->getId() == $autor->getId()) {
+                        $_SESSION['postId'] = $id;
+                    ?>
+                        <form method="POST" action="../controller/postagem.php">
+                            <input type="hidden" name="Postagem" value="Excluir" />
+                            <button type="submit">Excluir postagem</button>
+                        </form>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div style="width: 400px; padding: 20px; padding-top: 30px;">

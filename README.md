@@ -34,7 +34,7 @@ Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si 
 * O administrador pode, além das funções já existentes de um usuário comum (com exceção de excluir sua conta), pode excluir as postagens dos demais usuários e suas contas.
 
 ### Vulnerabilidades e não conformidades intencionalmente colocadas
-* Fraca política de senhas (ou falta dela);
+* Falta de uma política de senhas;
 * Tratamento de erro inapropriado;
 * Falta de proteção a ataques de força bruta;
 * Informações sensíveis são salvas "em claro" no banco de dados, ou seja, sem o uso de criptografia;
@@ -48,7 +48,8 @@ Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si 
 * *File Inclusion*
   * *LFI;*
   * *RFI;*
-* *Command Execution.*
+* *Command Execution;*
+* *CSRF (Cross-Site Request Forgery).*
 
 Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 
@@ -61,7 +62,7 @@ Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 
 ## Regras de Diretórios
 * Diretórios de desenvolvimento devem estar no modelo MVC.
-* Arquivos extras do Front-end devem ficar no diretório `modules`.
+* Arquivos extras do front-end devem ficar no diretório `modules`.
 * A documentação deve ficar no diretório `docs`.
 
 ## Diretórios
@@ -76,4 +77,4 @@ Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 ```
 
 ## Autores
-* <b>Vitor Oriel</b> - <a target="_blank" href="https://github.com/VitorOriel">Perfil</a> 
+* <b>Vitor Oriel</b> - <a target="_blank" href="https://github.com/VitorOriel">Perfil</a>

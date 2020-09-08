@@ -43,7 +43,7 @@ function listarPostagens(array $postagens, Usuario $autor = null) {
  * Função responsável por recuperar e mostrar todas as postagens
  */
 function mostrarTodasPostagens() {
-    $postagens = (new PostagemDAO())->recuperarTodos();
+    $postagens = (new PostagemDAO())->recuperarTodas();
 ?>
     <div class="post-container" style="height: 250px;">
         <?php listarPostagens($postagens); ?>

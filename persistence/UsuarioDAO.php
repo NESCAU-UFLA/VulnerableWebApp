@@ -9,7 +9,7 @@ class UsuarioDAO {
     /**
      * Método responsável por inserir um usuário no banco
      * @param Usuario $usuario O usuário a ser inserido
-     * @throws Exception Se o já existir no banco algum usuário com o mesmo login
+     * @throws Exception Se já existir no banco algum usuário com o mesmo login
      */
     public function inserir(Usuario $usuario) {
         $con = openCon();

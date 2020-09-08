@@ -52,7 +52,7 @@ class PostagemDAO {
      * Método responsável por recuperar todas as postagens do banco
      * @return mixed[] O array contendo as postagens e seus respectivos escritores
      */
-    public function recuperarTodos() {
+    public function recuperarTodas() {
         $con = openCon();
         $query = "SELECT * FROM Forum.Postagem AS P INNER JOIN Forum.Usuario AS U ON "
                  ."P.IdUsuario = U.IdUsuario ORDER BY IdPostagem ASC;";

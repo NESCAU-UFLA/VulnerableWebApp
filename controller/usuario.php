@@ -112,7 +112,7 @@ class UsuarioController {
         if ($_SESSION['resultado'][0])
             if ($fotoAntiga !== "default.png")
                 unlink($this->USER_IMG_PATH.$fotoAntiga);
-        header("Location: ../view/editar-dados.php");
+        header("Location: ../view/perfil.php");
     }
 
     /**
@@ -125,7 +125,7 @@ class UsuarioController {
         if (!empty($_POST['Nome']))
             $usuario->setNome($_POST['Nome']);
         $this->atualizar($usuario, "Dados alterados com sucesso!");
-        header("Location: ../view/editar-dados.php");
+        header("Location: ../view/perfil.php");
     }
 
     /**
@@ -135,7 +135,7 @@ class UsuarioController {
         $usuario = unserialize($_SESSION['usuario']);
         $usuario->setSenha($_POST['Senha']);
         $this->atualizar($usuario, "Senha alterada com sucesso!");
-        header("Location: ../view/editar-dados.php");
+        header("Location: ../view/perfil.php");
     }
 
     /**

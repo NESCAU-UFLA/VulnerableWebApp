@@ -25,3 +25,15 @@ function esconderFormDados() {
     $('#formImagem')[0].style.display = 'none';
     $('#formSenha')[0].style.display = 'none';
 }
+
+function mostrarFormEditarPost() {
+    $('#editPostButton')[0].style.display = 'none';
+    $('#post-content')[0].style.display = 'none';
+    $('#editPostForm')[0].style.display = 'block';
+}
+
+function esconderFormEditarPost() {
+    $('#editPostButton')[0].style.display = 'inline-block';
+    $('#post-content')[0].style.display = 'block';
+    $('#editPostForm')[0].style.display = 'none';
+}

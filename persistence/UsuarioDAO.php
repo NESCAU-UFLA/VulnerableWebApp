@@ -90,6 +90,22 @@ class UsuarioDAO {
     }
 
     /**
+     * Método responsável por recuperar um usuário através do seu id no banco
+     * @param int $id O id do usuário
+     * @return Usuario O usuário a ser recuperado
+     */
+    public function recuperarPorId(int $id) {
+        $con = openCon();
+        $query = "SELECT * FROM Forum.Usuario WHERE "
+                 ."IdUsuario = ".$id.";";
+        $res = mysqli_query($con, $query);
+        $usuario = new Usuario();
+        $usuario->Construtor(mysqli_fetch_array($res));
+        closeCon($con);
+        return $usuario;
+    }
+
+    /**
      * Método responsável por recuperar um usuário através do id de sua postagem
      * @param int $idPost O id da postagem
      * @return Usuario O autor da postagem

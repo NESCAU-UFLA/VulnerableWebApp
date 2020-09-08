@@ -43,7 +43,7 @@ if (isset($_SESSION['usuario'])) {
                         <?php echo "Bem-vindo, ".$user->getNome()."!";?>
                     </h3><br/>
                     <div>
-                        <a href="editar-dados.php">
+                        <a href="perfil.php">
                             <button>Ver perfil</button>
                         </a><br/><br/>
                         <form method="POST" action="../controller/usuario.php">

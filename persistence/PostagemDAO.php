@@ -51,6 +51,10 @@ class PostagemDAO {
         return $rows;
     }
 
+    /**
+     * Método responsável por recuperar as postagens de um dado usuário
+     * @param Usuario $usuario O autor das postagens
+     */
     public function recuperarPorUsuario(Usuario $usuario) {
         $con = openCon();
         $query = "SELECT IdPostagem, Mensagem, DataPostagem, UltimaEdicao FROM Forum.Postagem WHERE "

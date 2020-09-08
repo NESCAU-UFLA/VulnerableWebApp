@@ -42,7 +42,7 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                     </div>
                 </div>
-                <div class="inner-column" style="border-left: 1px solid grey; border-right: 1px solid grey; padding-top: 30px;">
+                <div class="inner-column" style="width: 250px; border-left: 1px solid grey; padding-top: 30px;">
                     <div id="postagensDoUsuario">
                         <?php mostrarPostagensDoUsuario(); ?>
                     </div>
@@ -57,19 +57,7 @@ if (isset($_SESSION['usuario'])) {
                         <button onclick="esconderFormDados();">Cancelar</button>
                     </div>
                 </div>
-                <div class="inner-column" style="padding-top: 30px; margin-right: 20px;">
-                    <div id="resultado">
-                        <?php mostrarMensagemDeResultado(); ?>
-                    </div>
-                    <div id="formSenha" style="display: none;">
-                        <form method="POST" action="../controller/usuario.php">
-                            <input type="hidden" name="Usuario" value="EditarSenha" />
-                            <input type="password" autocomplete="new-password" name="Senha" placeholder="Senha" required /><br/>
-                            <input type="password" autocomplete="new-password" name="Confirmar" placeholder="Confirmar senha" required /><br/><br/>
-                            <button type="submit" onclick="return validarSenha();">Alterar senha</button>
-                        </form>
-                    </div>
-                </div>
+                <?php colunaDeEdicaoPerfil(); ?>
             </div>
         </body>
     </html>

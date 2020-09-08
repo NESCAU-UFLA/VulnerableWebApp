@@ -19,7 +19,7 @@ if (isset($_SESSION['usuario'])) {
             <div class="containerCenter shadow-box" style="height: 350px; background-color: white;">
                 <div style="width: 250px!important;">
                     <a href="home.php">
-                        <button style="float: left;">Voltar</button>
+                        <button style="float: left;">Voltar ao Início</button>
                     </a>
                     <div class="inner-column" style="width: 150px; margin-left: 35px;">
                         <div class="user-img" style="margin-top:40px;">

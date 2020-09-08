@@ -24,6 +24,8 @@ if (isset($_SESSION['usuario'])) {
                         <input type="text" name="msg" placeholder="Pesquisar mensagem" required />
                         <button type="submit">Pesquisar</button>
                     </form>
+                    <br/><br/><br/>
+                    Lentidão ao navegar pelo fórum? Teste a sua conexão <a href="teste-de-conexao.php">aqui</a>
                 </div>
                 <div class="column shadow-box" style="width: 300px;">
                     <?php mostrarTodasPostagens(); ?>

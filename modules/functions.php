@@ -61,7 +61,7 @@ function mostrarPostagensPorMensagem(string $msg) {
     <div class="containerCenter shadow-box" style="background-color: white; width: 600px; height: 350px; padding-bottom: 20px; padding-right: 20px;">
         <div style="width: 100%;">
             <a href="home.php">
-                <button style="float: left;">Voltar</button>
+                <button style="float: left;">Voltar ao Início</button>
             </a><br/><br/>
             <h2 style="margin-left: 40px;">
                 Resultados da pesquisa para: <?php echo $msg; ?>
@@ -102,7 +102,7 @@ function mostrarPostagemPorId($id) {
         <div class="containerCenter shadow-box" style="background-color: white; width: 640px; height: 350px;">
             <div style="min-width: 200px;">
                 <a href="home.php">
-                    <button style="float: left;">Voltar</button>
+                    <button style="float: left;">Voltar ao Início</button>
                 </a>
                 <div style="text-align: center; padding-left: 35px;">
                     <div class="user-img" style="margin-top: 50px;">

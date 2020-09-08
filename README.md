@@ -27,11 +27,13 @@ Antes de por a mão na massa, devemos ficar atentos a algumas questões para que
 * O arquivo de configuração para a conexão com o banco pode ser encontrado no diretório `persistence` com o nome `dbconfig.php`. Altere-o de modo que tenha as mesmas credenciais de acesso ao seu banco.
 * Dê permissão de escrita ao diretório `uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.
 * No seu arquivo de configuração `php.ini` (Acesse <a href="https://www.php.net/manual/pt_BR/function.php-ini-loaded-file.php">essa página</a> em caso de dúvida para localizá-lo) verá que a configuração `allow_url_include` está em `Off`. Altere-a para `On` de modo que possa abrir arquivos de fora do sistema. Deixe assim: `allow_url_include = On`. Tal configuração deve ser manipulada para realizar testes de *RFI*.
+* No arquivo `usuario.php` dentro do diretório `controller` certifique-se que o atributo `USER_IMG_PATH` aponta para o diretório `uploads` no servidor da aplicação.
 
 ## Sobre a Aplicação
 Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si através de suas postagens.
 * O usuário pode cadastrar, editar e excluir sua conta, além de cadastrar, editar e excluir suas próprias postagens.
 * O administrador pode, além das funções já existentes de um usuário comum (com exceção de excluir sua conta), pode excluir as postagens dos demais usuários e suas contas.
+**Nota**: O primeiro usuário a ser registrado no sistema será o administrador.
 
 ### Vulnerabilidades e não conformidades intencionalmente colocadas
 * Falta de uma política de senhas;

@@ -140,13 +140,31 @@ class UsuarioController {
 
     /**
      * Método responsável por excluir um usuário
+     * @param Usuario $usuario O usuário a ser excluído
      */
-    public function excluir() {
-        $usuario = unserialize($_SESSION['usuario']);
-        unlink($this->USER_IMG_PATH.$usuario->getFoto());
+    private function excluir(Usuario $usuario) {
+        if ($usuario->getFoto() != "default.png")
+            unlink($this->USER_IMG_PATH.$usuario->getFoto());
         (new UsuarioDAO())->excluir($usuario);
+    }
+
+    /**
+     * Método responsável realizar a exclusão do usuário
+     */
+    public function excluirComoUsuario() {
+        $usuario = unserialize($_SESSION['usuario']);
+        $this->excluir($usuario);
         $this->logout();
     }
+
+    /**
+     * Método responsável por excluir um usuário através do administrador
+     */
+    public function excluirComoAdmin() {
+        $usuario = (new UsuarioDAO())->recuperarPorId($_POST['id']);
+        $this->excluir($usuario);
+        header("Location: ../view/home.php");
+    } 
 }
 
 $controller = new UsuarioController();
@@ -172,7 +190,10 @@ if (isset($_POST['Usuario'])) {
             $controller->atualizarSenha();
             break;
         case "Excluir":
-            $controller->excluir();
+            if (isset($_POST['id']))
+                $controller->excluirComoAdmin();
+            else
+                $controller->excluirComoUsuario();
             break;
     }
 }

@@ -74,6 +74,9 @@ function mostrarPostagensPorMensagem(string $msg) {
 <?php
 }
 
+/**
+ * Função responsável por mostrar as postagens do usuário em seu perfil
+ */
 function mostrarPostagensDoUsuario() {
     global $usuario;
     (new PostagemDAO())->recuperarPorUsuario($usuario);
@@ -194,10 +197,12 @@ function mostrarMensagemDeResultado() {
 function verificarVisitanteDoPerfil() {
     global $admin;
     global $usuario;
+    // Caso seja um visitante no perfil ...
     if (isset($_POST['idUsuario'])) {
         if ($_POST['idUsuario'] != $usuario->getId()) {
             if ($usuario->getId() == 1)
                 $admin = true;
+            // Atualize o usuário para que se possa mostrar as informações dele
             $usuario = (new UsuarioDAO())->recuperarPorId($_POST['idUsuario']);
         } else
             unset($_POST['idUsuario']);
@@ -210,14 +215,23 @@ function mostrarDadosDoPerfil() {
     echo '<h4>Nome: '.$usuario->getNome().'</h4>';
     if (!isset($_POST['idUsuario']) || $admin) {
         echo '<h4>Usuário: '.$usuario->getLogin().'</h4>';
-?>
-        <form method="POST" action="../controller/usuario.php"><br/>
-            <input type="hidden" name="Usuario" value="Excluir" />
-            <button type="submit">Excluir conta</button>
-        </form>
-<?php
-        if (!$admin)
-            echo '<button onclick="mostrarFormDados();">Editar dados</button>';
+        if (!isset($_POST['idUsuario']) && $admin) {
+        ?>
+            <form method="POST" action="../controller/usuario.php"><br/>
+                <input type="hidden" name="Usuario" value="Excluir" />
+                <input type="hidden" name="id" value="<?php echo $usuario->getId(); ?>" />
+                <button type="submit">Excluir conta</button>
+            </form>
+        <?php
+        } else if (!$admin) {
+        ?>
+            <button onclick="mostrarFormDados();">Editar dados</button>
+            <form method="POST" action="../controller/usuario.php"><br/>
+                <input type="hidden" name="Usuario" value="Excluir" />
+                <button type="submit">Excluir conta</button>
+            </form>
+        <?php
+        }
     }
 }
 ?>

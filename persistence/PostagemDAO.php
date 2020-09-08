@@ -23,6 +23,20 @@ class PostagemDAO {
     }
 
     /**
+     * Método responsável por atualizar uma postagem do banco
+     * @param Postagem $postagem A postagem a ser atualizada
+     */
+    public function atualizar(Postagem $postagem) {
+        $con = openCon();
+        $query = "UPDATE Forum.Postagem SET "
+                 ."Mensagem = '".$postagem->getMensagem()."', "
+                 ."UltimaEdicao = '".$postagem->getDataUltimaEdicao()."' "
+                 ."WHERE IdPostagem = ".$postagem->getId().";";
+        mysqli_query($con, $query);
+        closeCon($con);
+    }
+
+    /**
      * Método responsável por excluir uma postagem do banco
      * @param Postagem $postagem A postagem a ser excluída
      */
@@ -58,7 +72,7 @@ class PostagemDAO {
     public function recuperarPorUsuario(Usuario $usuario) {
         $con = openCon();
         $query = "SELECT IdPostagem, Mensagem, DataPostagem, UltimaEdicao FROM Forum.Postagem WHERE "
-                 ."IdUsuario = ".$usuario->getId().";";
+                 ."IdUsuario = ".$usuario->getId()." ORDER BY IdPostagem DESC;";
         $res = mysqli_query($con, $query);
         $postagens = [];
         foreach (mysqli_fetch_all($res) as $row) {

@@ -4,7 +4,6 @@ require("../modules/functions.php");
 session_start();
 
 if (isset($_SESSION['usuario']) && (isset($_GET['id']) || isset($_GET['msg']))) {
-
 ?>
     <html>
         <head>
@@ -25,6 +24,10 @@ if (isset($_SESSION['usuario']) && (isset($_GET['id']) || isset($_GET['msg']))) 
         </body>
     </html>
 <?php
+    if (isset($_SESSION['resultado'])) {
+        echo '<script>alert("'.$_SESSION['resultado'].'")</script>';
+        unset($_SESSION['resultado']);
+    }
 } else
     header("Location: ../index.php");
 ?>

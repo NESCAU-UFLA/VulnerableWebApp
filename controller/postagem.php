@@ -16,6 +16,17 @@ class PostagemController {
     }
 
     /**
+     * Método responsável por atualizar uma postagem
+     */
+    public function atualizar() {
+        $usuario = unserialize($_SESSION['usuario']);
+        $usuario->editarPostagemAtual($_POST['Mensagem']);
+        (new PostagemDAO())->atualizar($usuario->getPostagemAtual());
+        $_SESSION['resultado'] = "Mensagem atualizada com sucesso!";
+        header("Location: ../view/post.php?id=".$usuario->getPostagemAtual()->getId());
+    }
+
+    /**
      * Método responsável por excluir uma postagem
      */
     public function excluir() {
@@ -32,6 +43,9 @@ if (isset($_POST['Postagem'])) {
     switch($_POST['Postagem']) {
         case 'Inserir':
             $controller->inserir();
+            break;
+        case "Editar":
+            $controller->atualizar();
             break;
         case "Excluir":
             $controller->excluir();

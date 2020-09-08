@@ -146,6 +146,7 @@ class Usuario {
      * @param string $mensagem A mensagem
      */
     public function cadastrarPostagem(string $mensagem) {
+        $this->postagens[0] = new Postagem();
         $this->postagens[0]->setMensagem($mensagem);
     }
 

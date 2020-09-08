@@ -95,6 +95,9 @@ function mostrarPostagemPorId($id) {
     try {
         $autor = (new UsuarioDAO())->recuperarPorIdPost($id);
         $autor->setPostagemAtual((new PostagemDAO())->recuperarPorId($id));
+        $usuario = unserialize($_SESSION['usuario']);
+        if ($usuario->getId() == $autor->getId())
+            $_SESSION['usuario'] = serialize($autor);
 ?>
         <div class="containerCenter shadow-box" style="background-color: white; width: 640px; height: 350px;">
             <div style="min-width: 200px;">
@@ -113,7 +116,6 @@ function mostrarPostagemPorId($id) {
                         <button type="submit">Ver perfil</button>
                     </form>
                     <?php
-                    $usuario = unserialize($_SESSION['usuario']);
                     if ($usuario->getId() == 1 || $usuario->getId() == $autor->getId()) {
                         $_SESSION['postId'] = $id;
                         if ($usuario->getId() == $autor->getId())
@@ -129,7 +131,7 @@ function mostrarPostagemPorId($id) {
                     ?>
                 </div>
             </div>
-            <div style="width: 400px; padding: 20px; padding-top: 30px;">
+            <div style="min-width: 400px; padding: 20px; padding-top: 30px;">
                 <div id="post-content">
                     <div class="post-content" style="text-align: justify;">
                         <?php echo '" '.$autor->getPostagemAtual()->getMensagem().' "'; ?>
@@ -140,14 +142,14 @@ function mostrarPostagemPorId($id) {
                         <?php
                         $dataUltimaEdicao = $autor->getPostagemAtual()->getDataUltimaEdicao();
                         if ($dataUltimaEdicao != "")
-                            echo 'Ultima edição em: '.$dataUltimaEdicao;
+                            echo 'Última edição em: '.$dataUltimaEdicao;
                         ?>
                     </div>
                 </div>
-                <div id="editPostForm" style="display: none; text-align: center; padding-top: 60px;">
+                <div id="editPostForm" style="display: none; text-align: center; padding-top: 30px;">
                     <form method="POST" action="../controller/postagem.php">
                         <input type="hidden" name="Postagem" value="Editar" />
-                        <textarea name="Mensagem" style="height: 90px;" required ><?php echo $autor->getPostagemAtual()->getMensagem(); ?></textarea><br/><br/>
+                        <textarea name="Mensagem" style="height: 120px;" required ><?php echo $autor->getPostagemAtual()->getMensagem(); ?></textarea><br/><br/>
                         <button type="submit">Salvar alterações</button>
                     </form><br/><br/>
                     <button onclick="esconderFormEditarPost();">Cancelar</button>
@@ -160,6 +162,9 @@ function mostrarPostagemPorId($id) {
     }
 }
 
+/**
+ * Função responsável por adicionar a coluna de edição de senha e resultados para o dono do perfil
+ */
 function colunaDeEdicaoPerfil() {
     if (!isset($_POST['idUsuario'])) {
 ?>
@@ -194,14 +199,18 @@ function mostrarMensagemDeResultado() {
     }
 }
 
+/**
+ * Verifica se quem está visitando o perfil é um outro usuário para atualizar as informações a serem mostradas na página
+ */
 function verificarVisitanteDoPerfil() {
     global $admin;
     global $usuario;
+    // Se quem está acessando o perfil é o administrador ...
+    if ($usuario->getId() == 1)
+        $admin = true;
     // Caso seja um visitante no perfil ...
     if (isset($_POST['idUsuario'])) {
         if ($_POST['idUsuario'] != $usuario->getId()) {
-            if ($usuario->getId() == 1)
-                $admin = true;
             // Atualize o usuário para que se possa mostrar as informações dele
             $usuario = (new UsuarioDAO())->recuperarPorId($_POST['idUsuario']);
         } else
@@ -209,25 +218,33 @@ function verificarVisitanteDoPerfil() {
     }
 }
 
+/**
+ * Função responsável por mostrar os dados do perfil do usuário
+ * Também permite a edição e exclusão do perfil, caso seja o seu respectivo dono
+ * Caso seja o administrador, permite a exclusão dos usuários com exceção de si mesmo.
+ */
 function mostrarDadosDoPerfil() {
     global $admin;
     global $usuario;
     echo '<h4>Nome: '.$usuario->getNome().'</h4>';
     if (!isset($_POST['idUsuario']) || $admin) {
         echo '<h4>Usuário: '.$usuario->getLogin().'</h4>';
-        if (!isset($_POST['idUsuario']) && $admin) {
+        if (!isset($_POST['idUsuario'])) {
+            echo '<button onclick="mostrarFormDados();">Editar dados</button>';
+            // O administrador não pode excluir sua própria conta
+            if (!$admin) {
+            ?>
+                <form method="POST" action="../controller/usuario.php"><br/>
+                    <input type="hidden" name="Usuario" value="Excluir" />
+                    <button type="submit">Excluir conta</button>
+                </form>
+            <?php
+            }
+        } else if (isset($_POST['idUsuario']) && $admin) {
         ?>
             <form method="POST" action="../controller/usuario.php"><br/>
                 <input type="hidden" name="Usuario" value="Excluir" />
                 <input type="hidden" name="id" value="<?php echo $usuario->getId(); ?>" />
-                <button type="submit">Excluir conta</button>
-            </form>
-        <?php
-        } else if (!$admin) {
-        ?>
-            <button onclick="mostrarFormDados();">Editar dados</button>
-            <form method="POST" action="../controller/usuario.php"><br/>
-                <input type="hidden" name="Usuario" value="Excluir" />
                 <button type="submit">Excluir conta</button>
             </form>
         <?php

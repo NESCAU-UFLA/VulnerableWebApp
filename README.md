@@ -33,6 +33,7 @@ Antes de por a mão na massa, devemos ficar atentos a algumas questões para que
 Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si através de suas postagens.
 * O usuário pode cadastrar, editar e excluir sua conta, além de cadastrar, editar e excluir suas próprias postagens.
 * O administrador pode, além das funções já existentes de um usuário comum (com exceção de excluir sua conta), pode excluir as postagens dos demais usuários e suas contas.
+
 **Nota**: O primeiro usuário a ser registrado no sistema será o administrador.
 
 ### Vulnerabilidades e não conformidades intencionalmente colocadas

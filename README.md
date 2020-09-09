@@ -11,6 +11,7 @@ Este projeto tem por objetivo o desenvolvimento de uma aplicação web intencion
 * <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>;
 * <a href="#regras-de-diretórios">Regras de Diretórios</a>;
 * <a href="#diretórios">Diretórios</a>;
+* <a href="#autores">Autores</a>.
 
 ## Aviso Legal
 As vulnerabilidades e não conformidades aqui presentes foram propositalmente colocadas para fins educacionais apenas. Em hipótese alguma incentivamos o uso de tais más práticas.

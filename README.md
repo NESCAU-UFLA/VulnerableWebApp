@@ -24,11 +24,11 @@ Antes de por a mão na massa, devemos ficar atentos a algumas questões para que
 * Instale a extensão MySQLi para o PHP;
 
 ### Arquivos, configurações e permissões
-* O *sql script* para instanciar o *schema* da aplicação no banco de dados pode ser encontrado no diretório `persistence` com o nome `banco.sql`.
-* O arquivo de configuração para a conexão com o banco pode ser encontrado no diretório `persistence` com o nome `dbconfig.php`. Altere-o de modo que tenha as mesmas credenciais de acesso ao seu banco.
-* Dê permissão de escrita ao diretório `uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.
+* O *sql script* para instanciar o *schema* da aplicação no banco de dados pode ser encontrado no diretório `db` com o nome `banco.sql`.
+* O arquivo de configuração para a conexão com o banco pode ser encontrado no diretório `src/persistence` com o nome `dbconfig.php`. Altere-o de modo que tenha as mesmas credenciais de acesso ao seu banco.
+* Dê permissão de escrita ao diretório `src/uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.
 * No seu arquivo de configuração `php.ini` (Acesse <a href="https://www.php.net/manual/pt_BR/function.php-ini-loaded-file.php">essa página</a> em caso de dúvida para localizá-lo) verá que a configuração `allow_url_include` está em `Off`. Altere-a para `On` de modo que possa abrir arquivos de fora do sistema. Deixe assim: `allow_url_include = On`. Tal configuração deve ser manipulada para realizar testes de *RFI*.
-* No arquivo `usuario.php` dentro do diretório `controller` certifique-se que o atributo `USER_IMG_PATH` aponta para o diretório `uploads` no servidor da aplicação.
+* No arquivo `usuario.php` dentro do diretório `src/controller` certifique-se que o atributo `USER_IMG_PATH` aponta para o diretório `src/uploads` no servidor da aplicação.
 
 ## Sobre a Aplicação
 Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si através de suas postagens.
@@ -66,18 +66,20 @@ Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 
 ## Regras de Diretórios
 * Diretórios de desenvolvimento devem estar no modelo MVC.
-* Arquivos extras do front-end devem ficar no diretório `modules`.
+* Arquivos extras do front-end devem ficar no diretório `src/modules`.
 * A documentação deve ficar no diretório `docs`.
 
 ## Diretórios
 ```sh
-|-- controller
+|-- db
 |-- docs
-|-- model
-|-- modules
-|-- persistence
-|-- uploads
-|-- view
+|-- src
+    |-- controller
+    |-- model
+    |-- modules
+    |-- persistence
+    |-- uploads
+    |-- view
 ```
 
 ## Autores

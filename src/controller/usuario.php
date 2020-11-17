@@ -9,7 +9,7 @@ class UsuarioController {
     private $USER_IMG_PATH;
 
     function __construct() {
-        $this->USER_IMG_PATH = "/var/www/html/VulnerableWebApp/uploads/";
+        $this->USER_IMG_PATH = $_SERVER['DOCUMENT_ROOT']."/VulnerableWebApp/src/uploads/";
     }
 
     /**

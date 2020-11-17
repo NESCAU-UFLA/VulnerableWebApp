@@ -24,12 +24,12 @@ Antes de por a mão na massa, devemos ficar atentos a algumas questões para que
 * Instale a extensão MySQLi para o PHP;
 
 ### Arquivos, configurações e permissões
-* Todos os arquivos que devem ser utilizados na aplicação se encontram no diretório `src`.
 * O *sql script* para instanciar o *schema* da aplicação no banco de dados pode ser encontrado no diretório `db` com o nome `banco.sql`.
-* O arquivo de configuração para a conexão com o banco pode ser encontrado no diretório `src/persistence` com o nome `dbconfig.php`. Altere-o de modo que tenha as mesmas credenciais de acesso ao seu banco.
-* Dê permissão de escrita ao diretório `src/uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.
+* Todos os arquivos que devem ser utilizados na aplicação se encontram no diretório `src`.
+  * O arquivo de configuração para a conexão com o banco pode ser encontrado no diretório `src/persistence` com o nome `dbconfig.php`. Altere-o de modo que tenha as mesmas credenciais de acesso ao seu banco.
+  * Dê permissão de escrita ao diretório `src/uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.
+  * No arquivo `usuario.php` dentro do diretório `src/controller` certifique-se que o atributo `USER_IMG_PATH` aponta para o diretório `src/uploads` no servidor da aplicação.
 * No seu arquivo de configuração `php.ini` (Acesse <a href="https://www.php.net/manual/pt_BR/function.php-ini-loaded-file.php">essa página</a> em caso de dúvida para localizá-lo) verá que a configuração `allow_url_include` está em `Off`. Altere-a para `On` de modo que possa abrir arquivos de fora do sistema. Deixe assim: `allow_url_include = On`. Tal configuração deve ser manipulada para realizar testes de *RFI*.
-* No arquivo `usuario.php` dentro do diretório `src/controller` certifique-se que o atributo `USER_IMG_PATH` aponta para o diretório `src/uploads` no servidor da aplicação.
 
 ## Sobre a Aplicação
 Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si através de suas postagens.

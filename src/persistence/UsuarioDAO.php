@@ -35,16 +35,11 @@ class UsuarioDAO {
     public function login(Usuario $usuario) {
         $con = openCon();
         $query = "SELECT * FROM Forum.Usuario WHERE "
-                 ."Login = '".$usuario->getLogin()."';";
-        $res = mysqli_query($con, $query);
-        if (mysqli_num_rows($res) == 0)
-            throw new Exception("Este usuário não existe.");
-        $query = "SELECT * FROM Forum.Usuario WHERE "
                  ."Login = '".$usuario->getLogin()."' AND "
                  ."Senha = '".$usuario->getSenha()."';";
         $res = mysqli_query($con, $query);
         if (mysqli_num_rows($res) == 0)
-            throw new Exception("Senha inválida.");
+            throw new Exception("Usuário ou senha inválidos.");
         $usuario->Construtor(mysqli_fetch_row($res));
         closeCon($con);
     }

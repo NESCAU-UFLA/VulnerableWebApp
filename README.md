@@ -86,6 +86,7 @@ Lembrando que podem haver mais vulnerabilidades do que as listadas acima.
 |-- db
 |-- docs
 |-- src
+    |-- config
     |-- controller
     |-- model
     |-- modules

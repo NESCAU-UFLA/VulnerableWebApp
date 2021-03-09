@@ -1,5 +1,5 @@
 <?php
-include_once("../config/geeral.php");
+include_once("../config/geral.php");
 require_once("../model/Usuario.php");
 require_once("../persistence/UsuarioDAO.php");
 

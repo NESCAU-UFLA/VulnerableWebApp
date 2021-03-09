@@ -1,5 +1,5 @@
 <?php
-include_once("../config/geeral.php");
+include_once("../config/geral.php");
 
 /**
  * Função que abre uma conexão com o banco e a retorna

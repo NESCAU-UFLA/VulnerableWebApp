@@ -26,7 +26,7 @@ Antes de por a mão na massa, devemos ficar atentos a algumas questões para que
 ### Arquivos, configurações e permissões
 * O *sql script* para instanciar o *schema* da aplicação no banco de dados pode ser encontrado no diretório `db` com o nome `banco.sql`.
 * Todos os arquivos que devem ser utilizados na aplicação se encontram no diretório `src`.
-  * O arquivo de configuração para a conexão com o banco, além de demais variáveis globais necessárias à aplicação, se encontram no diretório `src/config/geeral.php`. Crie um arquivo chamado `env.php` no mesmo diretório para instanciar as variáveis de ambiente, seguindo o modelo a seguir:
+  * O arquivo de configuração para a conexão com o banco, além de demais variáveis globais necessárias à aplicação, se encontram no diretório `src/config/geral.php`. Crie um arquivo chamado `env.php` no mesmo diretório para instanciar as variáveis de ambiente, seguindo o modelo a seguir:
   ```
   <?php
   // Configuração do banco

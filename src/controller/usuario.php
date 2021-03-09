@@ -1,17 +1,11 @@
 <?php
+include_once("../config/geeral.php");
 require_once("../model/Usuario.php");
 require_once("../persistence/UsuarioDAO.php");
 
 session_start();
 
 class UsuarioController {
-    // Constante que representa o diretório das imagens
-    private $USER_IMG_PATH;
-
-    function __construct() {
-        $this->USER_IMG_PATH = "/var/www/html/VulnerableWebApp/src/uploads/";
-    }
-
     /**
      * Método responsável por fazer o upload da imagem
      * @return string O nome da imagem
@@ -20,13 +14,13 @@ class UsuarioController {
         $imgName = "";
         if (!empty($_FILES['foto']['name'])) {
             $imgName = basename($_FILES['foto']['name']);
-            $imgDir = $this->USER_IMG_PATH.$imgName;
+            $imgDir = $USER_IMG_PATH.$imgName;
             $imgType = strtolower(pathinfo($imgDir, PATHINFO_EXTENSION));
             $nameAux = basename($_FILES['foto']['name'], '.'.$imgType);
             $i = 0;
             while (file_exists($imgDir)) {
                 $imgName = $nameAux.'('.$i.').'.$imgType;
-                $imgDir = $this->USER_IMG_PATH.$imgName;
+                $imgDir = $USER_IMG_PATH.$imgName;
                 ++$i;
             }
             if (!move_uploaded_file($_FILES['foto']['tmp_name'], $imgDir))
@@ -50,7 +44,7 @@ class UsuarioController {
             header("Location: ../");
         } catch (Exception $e) {
             if (!empty($_FILES['foto']['name']))
-                unlink($this->USER_IMG_PATH.$usuario->getFoto());
+                unlink($USER_IMG_PATH.$usuario->getFoto());
             $_SESSION['resultado'] = $e->getMessage();
             header("Location: ../?page=view/cadastrar.php");
         }
@@ -111,7 +105,7 @@ class UsuarioController {
         $this->atualizar($usuario, "Foto alterada com sucesso!");
         if ($_SESSION['resultado'][0])
             if ($fotoAntiga !== "default.png")
-                unlink($this->USER_IMG_PATH.$fotoAntiga);
+                unlink($USER_IMG_PATH.$fotoAntiga);
         header("Location: ../view/perfil.php");
     }
 
@@ -144,7 +138,7 @@ class UsuarioController {
      */
     private function excluir(Usuario $usuario) {
         if ($usuario->getFoto() != "default.png")
-            unlink($this->USER_IMG_PATH.$usuario->getFoto());
+            unlink($USER_IMG_PATH.$usuario->getFoto());
         (new UsuarioDAO())->excluir($usuario);
     }
 

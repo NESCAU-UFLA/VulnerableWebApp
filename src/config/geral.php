@@ -8,5 +8,5 @@ $DB_PASS = $_ENV['DB_PASS'];
 $DB_NAME = $_ENV['DB_NAME'];
 
 // Configuração de diretório
-$USER_IMG_PATH = $_ENV['USER_IMG_PATH'];
+define(USER_IMG_PATH, $_ENV['USER_IMG_PATH']);
 ?>

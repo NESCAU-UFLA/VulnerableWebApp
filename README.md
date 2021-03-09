@@ -36,7 +36,7 @@ Antes de por a mão na massa, devemos ficar atentos a algumas questões para que
   $_ENV['DB_NAME'] = 'Forum';
 
   // Configuração de diretório
-  $_ENV['USER_IMG_PATH'] = 'var/www/html/uploads/';
+  $_ENV['USER_IMG_PATH'] = '/var/www/html/uploads/';
   ?>
   ```
   * Dê permissão de escrita ao diretório `src/uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.

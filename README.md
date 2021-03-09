@@ -26,9 +26,20 @@ Antes de por a mão na massa, devemos ficar atentos a algumas questões para que
 ### Arquivos, configurações e permissões
 * O *sql script* para instanciar o *schema* da aplicação no banco de dados pode ser encontrado no diretório `db` com o nome `banco.sql`.
 * Todos os arquivos que devem ser utilizados na aplicação se encontram no diretório `src`.
-  * O arquivo de configuração para a conexão com o banco pode ser encontrado no diretório `src/persistence` com o nome `dbconfig.php`. Altere-o de modo que tenha as mesmas credenciais de acesso ao seu banco.
+  * O arquivo de configuração para a conexão com o banco, além de demais variáveis globais necessárias à aplicação, se encontram no diretório `src/config/geeral.php`. Crie um arquivo chamado `env.php` no mesmo diretório para instanciar as variáveis de ambiente, seguindo o modelo a seguir:
+  ```
+  <?php
+  // Configuração do banco
+  $_ENV['DB_HOST'] = '127.0.0.1';
+  $_ENV['DB_USER'] = 'user';
+  $_ENV['DB_PASS'] = 'password';
+  $_ENV['DB_NAME'] = 'Forum';
+
+  // Configuração de diretório
+  $_ENV['USER_IMG_PATH'] = 'var/www/html/uploads/';
+  ?>
+  ```
   * Dê permissão de escrita ao diretório `src/uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.
-  * No arquivo `usuario.php` dentro do diretório `src/controller` certifique-se que o atributo `USER_IMG_PATH` aponta para o diretório `src/uploads` no servidor da aplicação.
 * No seu arquivo de configuração `php.ini` (Acesse <a href="https://www.php.net/manual/pt_BR/function.php-ini-loaded-file.php">essa página</a> em caso de dúvida para localizá-lo) verá que a configuração `allow_url_include` está em `Off`. Altere-a para `On` de modo que possa abrir arquivos de fora do sistema. Deixe assim: `allow_url_include = On`. Tal configuração deve ser manipulada para realizar testes de *RFI*.
 
 ## Sobre a Aplicação

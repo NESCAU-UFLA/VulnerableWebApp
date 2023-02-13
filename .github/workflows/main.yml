@@ -1,0 +1,34 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run Dependabot
+      uses: dependabot/actions/dependabot-core@v1
+      with:
+        args: upgrade
+
+    - name: Generate Alerts
+      uses: actions/bin/filter@v1
+      with:
+        args: dependabot-upgrade
+        severity: warning
+      id: filter
+
+    - name: Send Alerts
+      if: steps.filter.outputs.alerts
+      uses: actions/email@v2
+      with:
+        to: admin@example.com
+        subject: Dependabot Alerts
+        body: ${{ toJson(steps.filter.outputs.alerts) }}

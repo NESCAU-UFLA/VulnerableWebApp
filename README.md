@@ -6,6 +6,7 @@ Este projeto tem por objetivo o desenvolvimento de uma aplicação web intencion
 * <a href="#primeiros-passos">Primeiros passos</a>
   * <a href="#pré-requisitos">Pré-requisitos</a>;
   * <a href="#arquivos-configurações-e-permissões">Arquivos, configurações e permissões</a>;
+* <a href="#gerando-a-imagem-docker">Gerando a Imagem Docker</a>
 * <a href="#sobre-a-aplicação">Sobre a Aplicação</a>
   * <a href="#vulnerabilidades-e-não-conformidades-intencionalmente-colocadas">Vulnerabilidades e não conformidades intencionalmente colocadas</a>;
 * <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>;
@@ -41,6 +42,24 @@ Antes de por a mão na massa, devemos ficar atentos a algumas questões para que
   ```
   * Dê permissão de escrita ao diretório `src/uploads` no servidor da aplicação, para que os arquivos possam ser transferidos ao diretório durante o processo de *upload*.
 * No seu arquivo de configuração `php.ini` (Acesse <a href="https://www.php.net/manual/pt_BR/function.php-ini-loaded-file.php">essa página</a> em caso de dúvida para localizá-lo) verá que a configuração `allow_url_include` está em `Off`. Altere-a para `On` de modo que possa abrir arquivos de fora do sistema. Deixe assim: `allow_url_include = On`. Tal configuração deve ser manipulada para realizar testes de *RFI*.
+
+## Gerando a Imagem Docker
+
+Certifique-se de ter o Docker instalado em sua máquina. Você pode verificar se ele está instalado digitando docker --version em seu terminal. Se ele não estiver instalado, siga as instruções de instalação do Docker em seu respectivo [site](https://www.docker.com/get-started/).
+
+Acesse o diretório do projeto e escreva o seguinte comando no seu terminal para gerar a imagem docker:
+
+```docker build -t nome-da-imagem .```
+
+Substitua "nome-da-imagem" pelo nome que você deseja dar à imagem. O ponto no final indica que o Dockerfile está no diretório atual. Aguarde até que o processo de construção da imagem seja concluído.
+
+Verifique se a imagem foi criada executando o comando:
+
+```docker images```
+
+Isso exibirá a lista de todas as imagens Docker no seu sistema, incluindo a imagem que acabou de criar.
+
+Agora você pode usar essa imagem para criar e executar contêineres do projeto em qualquer máquina que tenha o Docker instalado.
 
 ## Sobre a Aplicação
 Trata-se de um fórum em que os usuários podem compartilhar mensagens entre si através de suas postagens.

@@ -6,6 +6,7 @@ Este projeto tem por objetivo o desenvolvimento de uma aplicação web intencion
 * <a href="#primeiros-passos">Primeiros passos</a>
   * <a href="#pré-requisitos">Pré-requisitos</a>;
   * <a href="#arquivos-configurações-e-permissões">Arquivos, configurações e permissões</a>;
+* <a href="#gerando-a-imagem-docker">Gerando a Imagem Docker</a>
 * <a href="#sobre-a-aplicação">Sobre a Aplicação</a>
   * <a href="#vulnerabilidades-e-não-conformidades-intencionalmente-colocadas">Vulnerabilidades e não conformidades intencionalmente colocadas</a>;
 * <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>;
